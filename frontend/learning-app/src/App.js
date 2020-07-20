@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Teacher from './component/teacher/index';
-import Dashboard from './component/frontpage/dashboard'
+import Dashboard from "./component/frontpage/dashboard"
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <Router>
       <Route exact path = "/" component = {Dashboard} />
       <Route path = "/guru" component = {Teacher} />
+      
       </Router>
     </div>
   );

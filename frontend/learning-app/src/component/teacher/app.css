@@ -1,0 +1,26 @@
+.main-color {
+    background-image: linear-gradient(to bottom right,#6381ED, #4FADE2);
+}
+
+.logout-button {
+    width: 130px;
+height: 35px;
+/* left: 1292px; */
+/* top: 14px; */
+
+background: #FFFFFF;
+border-radius: 66px;
+}
+
+.logout-text {
+    position: absolute;
+    width: 105px;
+    height: 22px;
+    left: 1445px;
+    top: 19px;
+    font-size: 14px;
+    line-height: 16px;
+}
+.bluehead {
+    color: #5A95E9;
+}

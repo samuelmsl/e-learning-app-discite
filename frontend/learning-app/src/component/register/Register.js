@@ -58,13 +58,13 @@ export default class Register extends Component {
                                     <img src={registerImage} alt="" className="register-img mt-5" />
                                 </div>
                                 <div className="col-sm-4">
-                                    <h3>Register Page</h3>
+                                    <h3 className="text-light">Register Page</h3>
                                     <input type="text" className="form-control my-3" name="nama" id="nama" placeholder="Nama" maxLength="30" autoComplete="off" required onChange={this.handleChange} />
                                     <input type="text" className="form-control my-3" name="username" id="username" placeholder="Username" maxLength="30" autoComplete="off" required onChange={this.handleChange} />
                                     <input type="password" className="form-control my-3" name="password" id="password" maxLength="30" placeholder="Password" required onChange={this.handleChange} />
                                     <input type="text" className="form-control my-3" name="kelas" id="id_kelas" placeholder="Kelas" maxLength="20" autoComplete="off" required onChange={this.handleChange} />
                                     <button type="submit" className="btn register-btn px-3 mb-3" onClick={this.handleSubmit}>Register</button>
-                                    <p>Sudah punya akun? <Link to="/login" className="text-light">Login</Link> </p>
+                                    <p className="text-light" style={{ fontSize: 15 }}>Sudah punya akun? <Link to="/login" className="text-light">Login</Link> </p>
                                 </div>
                             </div>
                         </div>

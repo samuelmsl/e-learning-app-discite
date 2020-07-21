@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Index from '../../img/index.png';
 import "./app.css";
 
 class Dashboard extends Component {
@@ -7,6 +6,8 @@ class Dashboard extends Component {
         return (
 
             <>
+            <div id = "initFront">
+
                 <div className="text-light">
                     <div className=" ml-4 mt-2 navbar text-light"><h1 className="font-weight-bold">Discite</h1></div>
                     <div className="ml-5 mt-4">
@@ -33,6 +34,7 @@ class Dashboard extends Component {
                     </div>
                 </div>
 
+            </div>
             </>
 
         );

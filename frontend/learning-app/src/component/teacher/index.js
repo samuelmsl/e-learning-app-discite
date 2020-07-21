@@ -22,6 +22,7 @@ class Teacher extends Component {
                     <Route exact path = "/guru" component = {TeacherDashboard} />
                     <Route exact path = "/guru/materi" component = {Materi} />
                     <Route path = "/guru/guru/materi/modul" component = {Modul} / >
+                
             {/* <TeacherDashboard /> */}
                 </Switch>
             </Router>

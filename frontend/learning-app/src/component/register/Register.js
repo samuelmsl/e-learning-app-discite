@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import './Register.css'
 import { Link } from 'react-router-dom'
- 
+import registerImage from '../img/registersvg.svg'
+
 export default class Register extends Component {
     state = {
         nama: '',
@@ -53,9 +54,9 @@ export default class Register extends Component {
                     <div className="container">
                         <div className="text-center">
                             <div className="row row-register">
-                                {/* <div className="col-sm-6">
+                                <div className="col-sm-6">
                                     <img src={registerImage} alt="" className="register-img mt-5" />
-                                </div> */}
+                                </div>
                                 <div className="col-sm-4">
                                     <h3>Register Page</h3>
                                     <input type="text" className="form-control my-3" name="nama" id="nama" placeholder="Nama" maxLength="30" autoComplete="off" required onChange={this.handleChange} />

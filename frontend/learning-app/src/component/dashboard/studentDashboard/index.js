@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 
 class StudentDashboard extends Component {
-    // state = {  }
+    constructor(props) {
+        super(props);
+        this.state = { 
+            nama: 'Samuel'
+        }
+    } 
+
+
     render() {
         return (
             <div id="page-content-wrapper">
                 <div className="container mt-5 ml-5">
-                    <h2 className="my-3 font-weight-bold bluehead">Selamat Datang, Murid!</h2>
+                    <h2 className="my-3 font-weight-bold bluehead">Selamat Datang, {this.state.nama}!</h2>
                     <div className="d-flex justify-content-between mt-5">
                         <div className="card-one">
                             <div className="d-flex justify-content-between mt-2">
@@ -15,8 +22,9 @@ class StudentDashboard extends Component {
                                     <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
                                 </svg>
                             </div>
-                            <a href="murid/submapel">
+                            <a href="murid/submapel?mapel=Matematika">
                                 <p className="text-center bluetext">Matematika</p>
+                                
                             </a>
                         </div>
 
@@ -27,7 +35,7 @@ class StudentDashboard extends Component {
                                     <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
                                 </svg>
                             </div>
-                            <a href="murid/submapel">
+                            <a href="murid/submapel?mapel=Bahasa Indonesia">
                                 <p className="text-center bluetext">Bahasa Indonesia</p>
                             </a>
                         </div>
@@ -39,7 +47,7 @@ class StudentDashboard extends Component {
                                     <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
                                 </svg>
                             </div>
-                            <a href="murid/submapel">
+                            <a href="murid/submapel?mapel=Bahasa Inggris">
                                 <p className="text-center bluetext">Bahasa Inggris</p>
                             </a>
                         </div>

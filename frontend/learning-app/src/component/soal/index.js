@@ -1,174 +1,139 @@
 import React, { Component } from 'react';
 import './index.css'
 
+const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFsdmlhbmlhbjIwMSIsImlzcyI6InNpc3dhIiwiZXhwIjoxNTk1NDM5OTE3LCJpYXQiOjE1OTUzMTk5MTcsImp0aSI6IjIiLCJ1c2VybmFtZSI6ImFsdmlhbjIwMSJ9.91MMn8Ri8M-2hZNW5W0QHNdICBn0-g4aPC3sV2FFv94";
 class Soal extends Component {
-    // state = {  }
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            soal: [],
+            jawabanMurid: [],
+            jawabanBenar: [],
+            totalBenar: 0,
+            mapel: 'Matematika',
+            kelas: "SMA 2"
+        }
+    } 
+
+    getAllSoal = () => {
+        const reqSoal = {
+            nama_kelas: this.state.kelas,
+            nama_mapel: this.state.mapel
+        }
+
+        fetch("http://localhost:8080/soalByNama", {
+            method: "POST",
+            body: JSON.stringify(reqSoal),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    soal: response
+                })
+            })
+            .catch(console.error)
+    }
+
+    submitJawaban = () => {
+        const hasil = [];
+        const jawabanBenar = this.state.jawabanBenar;
+        const jawabanMurid = this.state.jawabanMurid;
+        
+        for (let i = 0; i < jawabanBenar.length; i++) {
+            if (jawabanBenar[i] == jawabanMurid[i]) {
+                hasil.push(jawabanMurid[i]);
+            }
+        }
+        
+        setTimeout(() => {
+            this.setState({
+                totalBenar: hasil.length
+            })
+
+            const reqJawaban = {
+                nilai: this.state.totalBenar,
+                account: {
+                    id: 1
+                },
+                kelas: {
+                    id: 1
+                },
+                mapel: {
+                    id: 1
+                }
+            }
+
+            fetch("http://localhost:8080/addJawaban", {
+                method: "POST",
+                body: JSON.stringify(reqJawaban),
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => {
+                    if (res.status == 200) {
+                        alert("Jawaban Berhasil Disimpan")
+                        window.location.reload()
+                    } 
+                })
+                .catch(console.error)
+        }, 100);
+     }
+
+    isiJawaban = val => {
+        this.state.jawabanMurid.push(val.target.value)
+    }
+
+    componentDidMount() {
+        this.getAllSoal()
+     }
+    
+
+     render() {
         return (
-            <>
-                <div className="soalContainer">
-                    <div className="soalbox">
-                        <p>Hasil warna dari gabungan warna biru dan kuning adalah...</p>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan1" />
-                A. Merah
-                </label>
+            <div>
+                {this.state.soal.map((data, key) => {
+                    this.state.jawabanBenar.push(data.jawaban)
+                    return (
+                        <div className="soalContainer" key={key}>
+                            <div className="soalbox">
+                                <p>{data.question}</p>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="pilihan" value="pilihan_1" onClick={val => this.isiJawaban(val)}/>
+                                        A. {data.pilihan_1}
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="pilihan" value="pilihan_2" onClick={val => this.isiJawaban(val)}/>
+                                        B. {data.pilihan_2}
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="pilihan" value="pilihan_3" onClick={val => this.isiJawaban(val)}/>
+                                        C. {data.pilihan_3}
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="pilihan" value="pilihan_4" onClick={val => this.isiJawaban(val)}/>
+                                        D. {data.pilihan_4}
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan2" />
-                B. Ungu
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan3" />
-                C. Hijau
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan4" />
-                D. Hijau
-                </label>
-                        </div>
-
-                    </div>
-                    <div className="soalbox">
-                        <p>Hasil warna dari gabungan warna biru dan kuning adalah...</p>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan1" />
-                A. Merah
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan2" />
-                B. Ungu
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan3" />
-                C. Hijau
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan4" />
-                D. Hijau
-                </label>
-                        </div>
-
-                    </div>
-                    <div className="soalbox">
-                        <p>Hasil warna dari gabungan warna biru dan kuning adalah...</p>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan1" />
-                A. Merah
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan2" />
-                B. Ungu
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan3" />
-                C. Hijau
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan4" />
-                D. Hijau
-                </label>
-                        </div>
-
-                    </div>
-                    <div className="soalbox">
-                        <p>Hasil warna dari gabungan warna biru dan kuning adalah...</p>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan1" />
-                A. Merah
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan2" />
-                B. Ungu
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan3" />
-                C. Hijau
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan4" />
-                D. Hijau
-                </label>
-                        </div>
-
-                    </div>
-                    <div className="soalbox">
-                        <p>Hasil warna dari gabungan warna biru dan kuning adalah...</p>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan1" />
-                A. Merah
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan2" />
-                B. Ungu
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan3" />
-                C. Hijau
-                </label>
-                        </div>
-
-                        <div>
-                            <label>
-                                <input type="radio" name="pilihan" value="pilihan4" />
-                D. Hijau
-                </label>
-                        </div>
-
-                    </div>
-                </div>
-            </>
+                    )
+                })}
+                <button type="button" className="btn btn-success" style={{marginLeft: 75}} onClick={this.submitJawaban}>Submit</button>
+             </div>
         );
     }
 }

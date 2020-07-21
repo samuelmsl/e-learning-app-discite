@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Ava from "../img/avaprofil.png"
+import Ava from "../../img/avaprofil.png"
 
-class Sidebar extends Component {
+class SidebarTeacher extends Component {
     // state = {  }
     render() {
         return (
@@ -14,7 +14,7 @@ class Sidebar extends Component {
                             <h4 className = "mt-2 ml-3">Samuel Marsellino</h4>
                             </div>
                             <a href="#" class="list-group-item list-group-item-action bg-light bluehead">Dashboard</a>
-                            <a href="#" class="list-group-item list-group-item-action bg-light bluehead">Daftar Materi</a>
+                            <a href="/guru/materi" class="list-group-item list-group-item-action bg-light bluehead">Daftar Materi</a>
                             <a href="#" class="list-group-item list-group-item-action bg-light bluehead">Daftar Siswa</a>
                         </div>
                     </div>
@@ -24,4 +24,4 @@ class Sidebar extends Component {
     }
 }
 
-export default Sidebar;
+export default SidebarTeacher;

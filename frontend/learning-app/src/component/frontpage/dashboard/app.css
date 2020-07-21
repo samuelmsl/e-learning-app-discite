@@ -1,0 +1,18 @@
+body {
+    background-image: url('../../img/index.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    background-position: 0px -60px;
+    
+  }
+
+  .buttonlogin {
+    width: 320px;
+height: 72px;
+left: 84px;
+top: 478px;
+
+background: #FFFFFF;
+border-radius: 66px;
+  }

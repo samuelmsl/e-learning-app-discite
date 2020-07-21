@@ -1,9 +1,47 @@
 import React, { Component } from 'react'
-import registerImage from '../Assets/Images/registersvg.svg'
 import './Register.css'
 import { Link } from 'react-router-dom'
-
+ 
 export default class Register extends Component {
+    state = {
+        nama: '',
+        pasword: '',
+        type: 'siswa',
+        username: '',
+        kelas: ''
+    }
+
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+
+        const user = {
+            nama: this.state.nama,
+            password: this.state.password,
+            type: this.state.type,
+            username: this.state.username,
+            kelas: this.state.kelas
+        };
+        console.log(user)
+
+        fetch(`http://localhost:8080/public/register`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(response => {
+                alert("Berhasil Daftar")
+            })
+            .catch(console.error);
+    }
+
     render() {
         return (
             <>
@@ -15,20 +53,17 @@ export default class Register extends Component {
                     <div className="container">
                         <div className="text-center">
                             <div className="row row-register">
-                                <div className="col-sm-6">
+                                {/* <div className="col-sm-6">
                                     <img src={registerImage} alt="" className="register-img mt-5" />
-                                </div>
+                                </div> */}
                                 <div className="col-sm-4">
-                                    <form className="text-light">
-                                        <h3>Register Page</h3>
-                                        <input type="text" className="form-control my-3" name="nama" id="nama" placeholder="Nama" maxLength="30" autoComplete="off" required />
-                                        <input type="text" className="form-control my-3" name="username" id="username" placeholder="Username" maxLength="30" autoComplete="off" required />
-                                        <input type="email" className="form-control my-3" name="email" id="email" placeholder="Email" maxLength="40" autoComplete="off" required />
-                                        <input type="password" className="form-control my-3" name="password" id="username" maxLength="30" placeholder="Password" required />
-                                        <input type="text" className="form-control my-3" name="kelas" id="kelas" placeholder="Kelas" maxLength="20" autoComplete="off" required />
-                                        <button type="submit" className="btn register-btn px-3 mb-3">Register</button>
-                                        <p>Sudah punya akun? <Link to="/login" className="text-light">Login</Link> </p>
-                                    </form>
+                                    <h3>Register Page</h3>
+                                    <input type="text" className="form-control my-3" name="nama" id="nama" placeholder="Nama" maxLength="30" autoComplete="off" required onChange={this.handleChange} />
+                                    <input type="text" className="form-control my-3" name="username" id="username" placeholder="Username" maxLength="30" autoComplete="off" required onChange={this.handleChange} />
+                                    <input type="password" className="form-control my-3" name="password" id="password" maxLength="30" placeholder="Password" required onChange={this.handleChange} />
+                                    <input type="text" className="form-control my-3" name="kelas" id="id_kelas" placeholder="Kelas" maxLength="20" autoComplete="off" required onChange={this.handleChange} />
+                                    <button type="submit" className="btn register-btn px-3 mb-3" onClick={this.handleSubmit}>Register</button>
+                                    <p>Sudah punya akun? <Link to="/login" className="text-light">Login</Link> </p>
                                 </div>
                             </div>
                         </div>

@@ -3,15 +3,16 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Teacher from './component/teacher/index';
 import Dashboard from "./component/frontpage/dashboard"
 import Login from "./component/login/Login"
+import Register from './component/register/Register';
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <Route exact path = "/" component = {Dashboard} />
-      <Route path = "/guru" component = {Teacher} />
-      <Route path = "/login" component = {Login} />
-      
+        <Route exact path = "/" component = {Dashboard} />
+        <Route path = "/guru" component = {Teacher} />
+        <Route path = "/login" component = {Login} />
+        <Route path = "/register" component = {Register} />
       </Router>
     </div>
   );

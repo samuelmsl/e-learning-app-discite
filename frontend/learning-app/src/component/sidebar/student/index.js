@@ -15,7 +15,7 @@ class SidebarStudent extends Component {
                         </div>
                         <a href="#" class="list-group-item list-group-item-action bg-light bluehead">Dashboard</a>
                         <a href="#" class="list-group-item list-group-item-action bg-light bluehead">Daftar Materi</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-light bluehead">Daftar Soal</a>
+                        <a href="/murid/soal" class="list-group-item list-group-item-action bg-light bluehead">Daftar Soal</a>
                     </div>
                 </div>
                 {/* </div> */}

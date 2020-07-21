@@ -4,7 +4,8 @@ import Student from './component/student/index';
 import Teacher from './component/teacher/index';
 import Dashboard from "./component/frontpage/dashboard"
 import Login from "./component/login/Login"
-import Register from './component/register/Register';
+import Register from './component/register/Register'
+import Soal from './component/soal'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/guru" component={Teacher} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/soal" component={Soal} />
       </Router>
     </div>
   );

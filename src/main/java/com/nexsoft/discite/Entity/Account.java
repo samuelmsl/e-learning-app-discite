@@ -29,7 +29,6 @@ public class Account {
     @Column(nullable = false, length = 20)
     private String nama;
 
-    @OneToOne()
-    @JoinColumn(name = "id_kelas", nullable = false)
-    private Kelas kelas;
+    @Column(nullable = false, length = 20)
+    private String kelas;
 }

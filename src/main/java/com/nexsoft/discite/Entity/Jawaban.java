@@ -29,6 +29,6 @@ public class Jawaban {
     @JoinColumn(name = "id_kelas", nullable = false)
     private Kelas kelas;
 
-    @Column(name = "nilai", length = 4)
+    @Column(nullable = false, name = "nilai", length = 4)
     private Double nilai;
 }

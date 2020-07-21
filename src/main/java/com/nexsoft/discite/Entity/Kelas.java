@@ -18,10 +18,10 @@ public class Kelas {
     @Column(length =  4)
     private long id;
 
-    @Column(length = 20)
+    @Column(nullable = false, length = 20)
     private String nama_kelas;
 
     @JsonIgnore
     @OneToOne(mappedBy = "kelas")
-    private Account account;
+    private Mapel mapel;
 }

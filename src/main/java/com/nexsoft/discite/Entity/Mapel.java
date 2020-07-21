@@ -1,5 +1,6 @@
 package com.nexsoft.discite.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,14 @@ public class Mapel {
     @Column(length =  4)
     private long id;
 
-    @Column(length = 20)
+    @Column(nullable = false, length = 20)
     private String nama_mapel;
+
+    @OneToOne()
+    @JoinColumn(name = "id_kelas", nullable = false)
+    private Kelas kelas;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "mapel")
+    private Soal soal;
 }

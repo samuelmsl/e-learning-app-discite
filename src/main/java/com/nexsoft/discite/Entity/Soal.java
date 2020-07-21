@@ -17,21 +17,25 @@ public class Soal {
     @Column(length =  4)
     private long id;
 
-    @Column(length = 50)
+    @Column(nullable = false, length = 50)
     private String question;
 
-    @Column(length = 50)
+    @Column(nullable = false, length = 50)
     private String pilihan_1;
 
-    @Column(length = 50)
+    @Column(nullable = false, length = 50)
     private String pilihan_2;
 
-    @Column(length = 50)
+    @Column(nullable = false, length = 50)
     private String pilihan_3;
 
-    @Column(length = 50)
+    @Column(nullable = false, length = 50)
     private String pilihan_4;
 
-    @Column(length = 10)
+    @Column(nullable = false, length = 10)
     private String jawaban;
+
+    @OneToOne()
+    @JoinColumn(name = "id_mapel", nullable = false)
+    private Mapel mapel;
 }

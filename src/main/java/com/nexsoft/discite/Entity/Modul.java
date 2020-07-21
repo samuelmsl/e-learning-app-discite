@@ -21,7 +21,6 @@ public class Modul {
 
     @OneToOne()
     @JoinColumn(name = "id_mapel", nullable = false)
-
     private Mapel mapel;
 
     @Column(nullable = false, length = 30)

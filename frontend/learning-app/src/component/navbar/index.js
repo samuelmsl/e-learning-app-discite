@@ -7,7 +7,7 @@ class Navbar extends Component {
         return (
             <div className="navbar main-color">
                 <a href="#" className="navbar-brand col-md-8">
-                    <h1 className="mt-2"> <strong className="text-light ">Discite</strong></h1>
+                    <h1 className="mt-2"> <strong className="text-light">Discite</strong></h1>
                 </a>
                 <div className="logout-button d-flex justify-content-between mr-3">
                     <Link to="/" className="ml-4">

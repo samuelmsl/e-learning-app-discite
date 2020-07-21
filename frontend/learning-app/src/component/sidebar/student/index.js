@@ -10,12 +10,10 @@ class SidebarStudent extends Component {
                 <div className="bg-light col-md-2 bluehead" id="sidebar-wrapper" style={{ left: "0", top: "0", height: "800px" }}>
                     <div className="list-group list-group-flush mt">
                         <div className="d-flex justify-content-center mt-4">
-                            <img src={Ava} width="70" height="70"></img>
+                            <img src={Ava} width="70" height="70" alt=""></img>
                             <h4 className="mt-2 ml-3">Jansen Manuel</h4>
                         </div>
-                        <a href="#" className="list-group-item list-group-item-action bg-light bluehead">Dashboard</a>
-                        <a href="#" className="list-group-item list-group-item-action bg-light bluehead">Daftar Materi</a>
-                        <a href="/murid/soal" className="list-group-item list-group-item-action bg-light bluehead">Daftar Soal</a>
+                        <a href="/murid" className="list-group-item list-group-item-action bg-light bluehead">Dashboard</a>
                     </div>
                 </div>
                 {/* </div> */}

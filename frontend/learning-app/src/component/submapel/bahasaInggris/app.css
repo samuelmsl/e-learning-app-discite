@@ -16,15 +16,6 @@
     border-radius: 9px;
 }
 
-.card-three {
-    width: 333px;
-    height: 205px;
-    left: 1069px;
-    top: 202px;
-    background: rgba(255, 69, 69, 0.20);
-    border-radius: 9px;
-}
-
 .aone {
     width: 100px;
     height: 100px;
@@ -41,16 +32,6 @@
     left: 373px;
     top: 518px;
     background: #6A79FF;
-    border-radius: 147px;
-}
-
-
-.athree {
-    width: 100px;
-    height: 100px;
-    left: 373px;
-    top: 518px;
-    background: #FF6A6A;
     border-radius: 147px;
 }
 

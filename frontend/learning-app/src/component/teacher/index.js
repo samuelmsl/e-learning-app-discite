@@ -10,24 +10,20 @@ import Modul from "../modul";
 class Teacher extends Component {
     render() {
         return (
-
             <>
-
-            <Navbar />
-            <div class="d-flex " id="wrapper">
-            <SidebarTeacher />
-
-            <Router>
-                <Switch>
-                    <Route exact path = "/guru" component = {TeacherDashboard} />
-                    <Route exact path = "/guru/materi" component = {Materi} />
-                    <Route path = "/guru/guru/materi/modul" component = {Modul} / >
-                
-            {/* <TeacherDashboard /> */}
-                </Switch>
-            </Router>
-            </div>
-            {/* <Route/> */}
+                <Navbar />
+                <div className="d-flex " id="wrapper">
+                    <SidebarTeacher />
+                    <Router>
+                        <Switch>
+                            <Route exact path="/guru" component={TeacherDashboard} />
+                            <Route exact path="/guru/materi" component={Materi} />
+                            <Route path="/guru/guru/materi/modul" component={Modul} />
+                            {/* <TeacherDashboard /> */}
+                        </Switch>
+                    </Router>
+                </div>
+                {/* <Route/> */}
             </>
         );
     }

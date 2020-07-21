@@ -1,47 +1,44 @@
 package com.nexsoft.discite.Controller;
 
-import com.nexsoft.discite.Dto.MapelReponse;
+import com.nexsoft.discite.Entity.Kelas;
 import com.nexsoft.discite.Entity.Mapel;
-import com.nexsoft.discite.Service.MapelService;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
+import com.nexsoft.discite.Repository.MapelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MapelController {
-
     @Autowired
-    private MapelService mapelService;
+    private MapelRepository mapelRepository;
 
-    @PostMapping("/uploadFile")
-    public MapelReponse uploadFile(@RequestParam("files") MultipartFile file) {
-        Mapel fileName = mapelService.storeFile(file);
-
-        String fileDownloadUri  = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
-                .path(fileName.getFileName())
-                .toUriString();
-
-        return new MapelReponse(fileName.getFileName(), fileDownloadUri,
-                file.getContentType(), file.getSize());
+    @GetMapping("/mapel")
+    private List<Mapel> getAllMapel() {
+        return mapelRepository.findAll();
     }
 
-    @GetMapping("/downloadFile/{fileName:.+}")
-    public ResponseEntity <Resource> downloadFile(@PathVariable Long fileName, HttpServletRequest request) {
-        Mapel mapel = mapelService.getFile(fileName);
+    @GetMapping("/mapel/{id}")
+    private Mapel getMapelById(@PathVariable long id) {
+        return mapelRepository.findById(id).orElse(null);
+    }
 
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(mapel.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + mapel.getFileName() + "\"")
-                .body(new ByteArrayResource(mapel.getData()));
+    @PostMapping("/addMapel")
+    private Mapel addMapel(@RequestBody Mapel mapel) {
+        return mapelRepository.save(mapel);
+    }
+
+    @PutMapping("/updateMapel")
+    private Mapel updateMapel(@RequestBody Mapel mapel) {
+        Mapel reqMapel = mapelRepository.findById(mapel.getId()).orElse(null);
+        reqMapel.setNama_mapel(mapel.getNama_mapel());
+        return mapelRepository.save(reqMapel);
+    }
+
+    @DeleteMapping("/deleteMapel/{id}")
+    private String deleteMapel(@PathVariable long id) {
+        mapelRepository.deleteById(id);
+        return "Data Berhasil Dihapus";
     }
 }

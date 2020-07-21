@@ -23,7 +23,7 @@ public class Jawaban {
 
     @OneToOne()
     @JoinColumn(name = "id_mapel", nullable = false)
-    private Mapel mapel;
+    private Modul modul;
 
     @OneToOne()
     @JoinColumn(name = "id_kelas", nullable = false)

@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import "./app.css";
-
+ 
 const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYW5zZW4iLCJwYXNzd29yZCI6ImphbnNlbiIsImlzcyI6Imd1cnUiLCJleHAiOjE1OTU1MTcwMTYsImlhdCI6MTU5NTM5NzAxNiwianRpIjoiMSIsInVzZXJuYW1lIjoiamFuc2VuIn0.X-AQQmorfFa62Go4OwVu8b_vowvWcRU-MSqp22vNJ8w";
 export default class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
             nama: 'Samuel',
-            mapel: '',
+            mapel: 'Matematika',
             jumlahMateri: 0,
             jumlahSoal: 0,
             kelas: "SMA 2"

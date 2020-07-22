@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
 import './index.css'
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFsdmlhbmlhbjIwMSIsImlzcyI6InNpc3dhIiwiZXhwIjoxNTk1NDM5OTE3LCJpYXQiOjE1OTUzMTk5MTcsImp0aSI6IjIiLCJ1c2VybmFtZSI6ImFsdmlhbjIwMSJ9.91MMn8Ri8M-2hZNW5W0QHNdICBn0-g4aPC3sV2FFv94";
+const jwtDecode = require('jwt-decode');
+
+const token = localStorage.getItem("jwtToken");
+let decodeToken = '';
+if (token != null) {
+     decodeToken = jwtDecode(token);
+}
 class Soal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            nama: decodeToken.jti,
             soal: [],
             jawabanMurid: [],
             jawabanBenar: [],
             totalBenar: 0,
-            mapel: 'Matematika',
-            kelas: "SMA 2"
+            showNilai: null,
+            mapel: decodeURIComponent(this.getUrlVars()["mapel"]),
+            kelas: decodeToken.aud
         }
+    }
+    
+    getUrlVars = () => {
+        const vars = {};
+        const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
     }
 
     getAllSoal = () => {
@@ -43,13 +59,14 @@ class Soal extends Component {
         const hasil = [];
         const jawabanBenar = this.state.jawabanBenar;
         const jawabanMurid = this.state.jawabanMurid;
-
+        
         for (let i = 0; i < jawabanBenar.length; i++) {
             if (jawabanBenar[i] == jawabanMurid[i]) {
                 hasil.push(jawabanMurid[i]);
             }
         }
-
+        
+        
         setTimeout(() => {
             this.setState({
                 totalBenar: hasil.length
@@ -57,16 +74,11 @@ class Soal extends Component {
 
             const reqJawaban = {
                 nilai: this.state.totalBenar,
-                account: {
-                    id: 1
-                },
-                kelas: {
-                    id: 1
-                },
-                mapel: {
-                    id: 1
-                }
+                nama_siswa: this.state.nama,
+                nama_kelas: this.state.kelas,
+                nama_mapel: this.state.mapel
             }
+            
 
             fetch("http://localhost:8080/addJawaban", {
                 method: "POST",
@@ -79,16 +91,25 @@ class Soal extends Component {
                 .then(res => {
                     if (res.status == 200) {
                         alert("Jawaban Berhasil Disimpan")
-                        window.location.reload()
-                    }
+                    } 
                 })
                 .catch(console.error)
+                
+                const showNilaiTemp = <div style={{marginLeft: 75, marginTop: 30}}>
+                    <h4>Nilai</h4>
+                    <h4 style={{color: "green"}}>{this.state.totalBenar}/{this.state.soal.length}</h4>
+                </div>;
+
+            this.setState({
+                showNilai: showNilaiTemp
+            })
         }, 100);
+     }
+
+    isiJawaban = (val, index) => {
+        this.state.jawabanMurid[index] = val.target.value;
     }
 
-    isiJawaban = val => {
-        this.state.jawabanMurid.push(val.target.value)
-    }
 
     componentDidMount() {
         this.getAllSoal()
@@ -106,25 +127,25 @@ class Soal extends Component {
                                 <p>{data.question}</p>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_1" onClick={val => this.isiJawaban(val)} />
+                                        <input type="radio" name={key} value="pilihan_1" onClick={val => this.isiJawaban(val, key)}/>
                                         A. {data.pilihan_1}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_2" onClick={val => this.isiJawaban(val)} />
+                                        <input type="radio" name={key} value="pilihan_2" onClick={val => this.isiJawaban(val, key)}/>
                                         B. {data.pilihan_2}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_3" onClick={val => this.isiJawaban(val)} />
+                                        <input type="radio" name={key} value="pilihan_3" onClick={val => this.isiJawaban(val, key)}/>
                                         C. {data.pilihan_3}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_4" onClick={val => this.isiJawaban(val)} />
+                                        <input type="radio" name={key} value="pilihan_4" onClick={val => this.isiJawaban(val, key)}/>
                                         D. {data.pilihan_4}
                                     </label>
                                 </div>
@@ -132,8 +153,9 @@ class Soal extends Component {
                         </div>
                     )
                 })}
-                <button type="button" className="btn btn-success" style={{ marginLeft: 75 }} onClick={this.submitJawaban}>Submit</button>
-            </div>
+                <button type="button" className="btn btn-success" style={{marginLeft: 75}} onClick={this.submitJawaban}>Submit</button>
+                {this.state.showNilai}
+             </div>
         );
     }
 }

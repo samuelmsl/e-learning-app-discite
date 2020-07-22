@@ -1,17 +1,34 @@
 import React, { Component } from "react";
+const jwtDecode = require('jwt-decode');
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFsdmlhbmlhbjIwMSIsImlzcyI6InNpc3dhIiwiZXhwIjoxNTk1NDM5OTE3LCJpYXQiOjE1OTUzMTk5MTcsImp0aSI6IjIiLCJ1c2VybmFtZSI6ImFsdmlhbjIwMSJ9.91MMn8Ri8M-2hZNW5W0QHNdICBn0-g4aPC3sV2FFv94";
+const token = localStorage.getItem("jwtToken");
+let decodeToken = '';
+if (token != null) {
+     decodeToken = jwtDecode(token);
+}
 class StudentDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = { 
             materi: [],
-            kelas: 'SMA 2',
-            mapel: 'Matematika',
+            kelas: decodeToken.aud,
+            mapel: decodeURIComponent(this.getUrlVars()["mapel"]),
             showAllMateri: null
         }
     } 
     
+    getUrlVars = () => {
+        const vars = {};
+        const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
+
+    moveToDetailMateri = judul => {
+        window.location.href = `/murid/submapel/daftarmateri/materi?mapel=${this.state.mapel}&judul=${judul}`
+    }
 
     getAllMateri = async () => {
         const reqModulByKelas = {
@@ -44,9 +61,8 @@ class StudentDashboard extends Component {
                                     <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
                                 </svg>
                             </div>
-                            <a href="/murid/submapel/daftarmateri/materi">
+                            <a onClick={() => this.moveToDetailMateri(data.nama_modul)}>
                                 <p className="text-center bluetext">{data.nama_modul}</p>
-
                             </a>
                         </div>
             )
@@ -60,6 +76,8 @@ class StudentDashboard extends Component {
 
     componentDidMount() {
         this.getAllMateri();
+        console.log(this.state.mapel);
+        console.log(this.state.kelas);
     }
 
     render() {

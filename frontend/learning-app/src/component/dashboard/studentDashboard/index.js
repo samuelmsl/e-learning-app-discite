@@ -1,10 +1,16 @@
 import React, { Component } from "react";
+const jwtDecode = require('jwt-decode');
 
+const token = localStorage.getItem("jwtToken");
+let decodeToken = '';
+if (token != null) {
+     decodeToken = jwtDecode(token);
+}
 class StudentDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nama: 'Jansen'
+            nama: decodeToken.jti
         }
     }
 

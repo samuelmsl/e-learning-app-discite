@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
-const jwtDecode = require('jwt-decode');
+import "./app.css";
 
-const token = localStorage.getItem("jwtToken");
-let decodeToken = '';
-if (token != null) {
-     decodeToken = jwtDecode(token);
-}
+const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFsdmlhbmlhbjIwMSIsImlzcyI6InNpc3dhIiwiZXhwIjoxNTk1NDM5OTE3LCJpYXQiOjE1OTUzMTk5MTcsImp0aSI6IjIiLCJ1c2VybmFtZSI6ImFsdmlhbjIwMSJ9.91MMn8Ri8M-2hZNW5W0QHNdICBn0-g4aPC3sV2FFv94";
 export default class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nama: decodeToken.jit,
+            nama: 'Samuel',
             mapel: '',
             jumlahMateri: 0,
             jumlahSoal: 0,
-            kelas: decodeToken.aud
+            kelas: "SMA 2"
         }
     }
 
@@ -70,14 +66,6 @@ export default class index extends Component {
             })
     }
 
-    moveToDaftarSoal = () => {
-        window.location.href = "/murid/submapel/daftarsoal?mapel=" + this.state.mapel
-    }
-
-    moveToDaftarMateri = () => {
-        window.location.href = "/murid/submapel/daftarmateri?mapel=" + this.state.mapel
-    }
-
     componentDidMount() {
         this.setState({
             mapel: decodeURIComponent(this.getUrlVars()["mapel"])
@@ -107,7 +95,7 @@ export default class index extends Component {
                                         <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
                                     </svg>
                                 </div>
-                                <a onClick={this.moveToDaftarMateri}>
+                                <a href="/murid/submapel/daftarmateri">
                                     <p className="d-flex justify-content-end mr-5 bluetext">Daftar Materi</p>
                                 </a>
                             </div>
@@ -122,7 +110,7 @@ export default class index extends Component {
                                         <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2zM1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                                     </svg>
                                 </div>
-                                <a onClick={this.moveToDaftarSoal}>
+                                <a href="/murid/submapel/daftarsoal">
                                     <p className="d-flex justify-content-end mr-5 bluetext">Daftar Soal</p>
                                 </a>
                             </div>

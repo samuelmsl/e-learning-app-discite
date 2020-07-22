@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux'
 import "./app.css";
-import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "../navbar";
 import SidebarTeacher from "../sidebar/teacher";
 import TeacherDashboard from "../dashboard/teacherDashboard";
@@ -39,9 +40,9 @@ class Teacher extends Component {
     }
 }
 
-Teacher.propTypes = {
-    security: PropTypes.object.isRequired
-};
+// Teacher.propTypes = {
+//     security: PropTypes.object.isRequired
+// };
 
 const mapStateToProps = state => ({
     security: state.security

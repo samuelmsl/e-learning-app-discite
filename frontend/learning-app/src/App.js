@@ -40,7 +40,7 @@ function App() {
 
       <Router>
         <Route exact path="/" component={Dashboard} />
-        <SecuredRoute path="/murid" component={Student} />
+        <Route path="/murid" component={Student} />
         <SecuredRoute path="/guru" component={Teacher} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-// import './index.css'
+const jwtDecode = require('jwt-decode');
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFsdmlhbmlhbjIwMSIsImlzcyI6InNpc3dhIiwiZXhwIjoxNTk1NDM5OTE3LCJpYXQiOjE1OTUzMTk5MTcsImp0aSI6IjIiLCJ1c2VybmFtZSI6ImFsdmlhbjIwMSJ9.91MMn8Ri8M-2hZNW5W0QHNdICBn0-g4aPC3sV2FFv94";
+const token = localStorage.getItem("jwtToken");
+let decodeToken = '';
+if (token != null) {
+     decodeToken = jwtDecode(token);
+}
 class Soal extends Component {
     constructor(props) {
         super(props);
@@ -11,10 +15,18 @@ class Soal extends Component {
             jawabanBenar: [],
             totalBenar: 0,
             showNilai: null,
-            mapel: 'Matematika',
-            kelas: "SMA 2"
+            mapel: decodeURIComponent(this.getUrlVars()["mapel"]),
+            kelas: decodeToken.aud
         }
     } 
+
+    getUrlVars = () => {
+        const vars = {};
+        const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
 
     getAllSoal = () => {
         const reqSoal = {
@@ -22,6 +34,7 @@ class Soal extends Component {
             nama_mapel: this.state.mapel
         }
 
+ 
         fetch("http://localhost:8080/soalByNama", {
             method: "POST",
             body: JSON.stringify(reqSoal),
@@ -32,8 +45,7 @@ class Soal extends Component {
         })
             .then(res => res.json())
             .then(response => {
-                console.log(response)
-                this.setState({
+                 this.setState({
                     soal: response
                 })
             })
@@ -44,8 +56,6 @@ class Soal extends Component {
         const hasil = [];
         const jawabanBenar = this.state.jawabanBenar;
         const jawabanMurid = this.state.jawabanMurid;
-        
-        console.log(this.state.jawabanMurid)
         
         for (let i = 0; i < jawabanBenar.length; i++) {
             if (jawabanBenar[i] == jawabanMurid[i]) {
@@ -71,6 +81,7 @@ class Soal extends Component {
                     id: 1
                 }
             }
+            
 
             fetch("http://localhost:8080/addJawaban", {
                 method: "POST",

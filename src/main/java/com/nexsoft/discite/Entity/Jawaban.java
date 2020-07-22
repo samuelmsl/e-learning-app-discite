@@ -17,17 +17,14 @@ public class Jawaban {
     @Column(length = 4)
     private long id;
 
-    @OneToOne()
-    @JoinColumn(name = "id_account", nullable = false)
-    private Account account;
+    @Column(nullable = false, length = 40)
+    private String nama_siswa;
 
-    @OneToOne()
-    @JoinColumn(name = "id_mapel", nullable = false)
-    private Mapel mapel;
+    @Column(nullable = false, length = 20)
+    private String nama_mapel;
 
-    @OneToOne()
-    @JoinColumn(name = "id_kelas", nullable = false)
-    private Kelas kelas;
+    @Column(nullable = false, length = 20)
+    private String nama_kelas;
 
     @Column(nullable = false, name = "nilai", length = 4)
     private int nilai;

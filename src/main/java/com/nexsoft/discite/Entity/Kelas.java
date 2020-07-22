@@ -20,12 +20,4 @@ public class Kelas {
 
     @Column(nullable = false, length = 20)
     private String nama_kelas;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "kelas")
-    private Mapel mapel;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "mapel")
-    private Jawaban jawaban;
 }

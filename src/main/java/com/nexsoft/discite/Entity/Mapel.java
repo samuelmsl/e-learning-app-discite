@@ -21,11 +21,4 @@ public class Mapel {
     @Column(nullable = false, length = 20)
     private String nama_mapel;
 
-    @OneToOne()
-    @JoinColumn(name = "id_kelas", nullable = false)
-    private Kelas kelas;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "mapel")
-    private Jawaban jawaban;
 }

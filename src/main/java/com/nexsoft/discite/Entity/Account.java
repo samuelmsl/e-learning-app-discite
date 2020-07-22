@@ -33,7 +33,4 @@ public class Account {
     @Column(nullable = false, length = 20)
     private String kelas;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "mapel")
-    private Jawaban jawaban;
 }

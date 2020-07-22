@@ -30,10 +30,10 @@ public class JWTUtil {
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", account.getUsername());
         claims.put("password", account.getPassword());
-        return createToken(claims, account.getType(), account.getId(), account.getUsername());
+        return createToken(claims, account.getType(), account.getId(), account.getUsername(), account.getKelas(), account.getNama());
     }
 
-    private LoginResponse createToken(Map<String, Object> claims, String type, long id, String username) {
+    private LoginResponse createToken(Map<String, Object> claims, String type, long id, String username, String kelas, String name) {
         Calendar expr = Calendar.getInstance();
         expr.add(Calendar.SECOND, 300);
         Date now = new Date(System.currentTimeMillis());
@@ -42,9 +42,10 @@ public class JWTUtil {
         String token = Jwts
                 .builder()
                 .setClaims(claims)
-                .setId(String.valueOf(id))
+                .setId(name)
                 .setSubject(username)
                 .setIssuer(type)
+                .setAudience(kelas)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(expDate)
                 .signWith(SignatureAlgorithm.HS256, secretKey)

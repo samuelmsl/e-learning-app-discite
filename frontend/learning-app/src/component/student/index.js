@@ -2,17 +2,26 @@ import React, { Component } from 'react'
 import Navbar from '../navbar'
 import SidebarStudent from '../sidebar/student'
 import StudentDashboard from '../dashboard/studentDashboard'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Submapel from "../submapel"
 import Soal from "../daftarsoal/"
 import DaftarMateri from "../daftarmateri"
-import Materi from '../materi/student'
+import Materi from '../materi/student';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
 // import Matematika from "../submapel/matematika"
 // import BahasaIndonesia from "../submapel/bahasaIndonesia"
 // import BahasaInggris from "../submapel/bahasaInggris"
 
-export default class index extends Component {
+class Student extends Component {
     render() {
+        const { validToken, user } = this.props.security;
+            if (user.iss != "murid") {
+                return(
+                    <Redirect to="/guru" />
+                )
+            }
         return (
             <>
                 <Navbar />
@@ -35,3 +44,15 @@ export default class index extends Component {
         )
     }
 }
+
+Student.propTypes = {
+    security: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    security: state.security
+});
+
+export default connect(
+    mapStateToProps,
+)(Student);

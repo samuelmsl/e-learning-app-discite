@@ -4,7 +4,9 @@ import SidebarStudent from '../sidebar/student'
 import StudentDashboard from '../dashboard/studentDashboard'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Submapel from "../submapel"
-import Soal from "../soal"
+import Soal from "../daftarsoal/"
+import DaftarMateri from "../daftarmateri"
+import Materi from '../materi/student'
 // import Matematika from "../submapel/matematika"
 // import BahasaIndonesia from "../submapel/bahasaIndonesia"
 // import BahasaInggris from "../submapel/bahasaInggris"
@@ -23,7 +25,9 @@ export default class index extends Component {
                             <Route exact path="/murid/indonesia" component={BahasaIndonesia} />
                             <Route exact path="/murid/inggris" component={BahasaInggris} /> */}
                             <Route exact path="/murid/submapel" component={Submapel} />
-                            <Route exact path="/murid/submapel/soal" component={Soal} />
+                            <Route exact path="/murid/submapel/daftarsoal" component={Soal} />
+                            <Route exact path="/murid/submapel/daftarmateri" component={DaftarMateri} />
+                            <Route exact path="/murid/submapel/daftarmateri/materi" component={Materi} />
                         </Switch>
                     </Router>
                 </div>

@@ -4,7 +4,7 @@ class StudentDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nama: 'Samuel'
+            nama: 'Jansen'
         }
     }
 

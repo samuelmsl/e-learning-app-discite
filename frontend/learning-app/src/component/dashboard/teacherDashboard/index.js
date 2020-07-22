@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import "./app.css";
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFsdmlhbmlhbjIwMSIsImlzcyI6InNpc3dhIiwiZXhwIjoxNTk1NDM5OTE3LCJpYXQiOjE1OTUzMTk5MTcsImp0aSI6IjIiLCJ1c2VybmFtZSI6ImFsdmlhbjIwMSJ9.91MMn8Ri8M-2hZNW5W0QHNdICBn0-g4aPC3sV2FFv94";
+const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYW5zZW4iLCJwYXNzd29yZCI6ImphbnNlbiIsImlzcyI6Imd1cnUiLCJleHAiOjE1OTU1MTcwMTYsImlhdCI6MTU5NTM5NzAxNiwianRpIjoiMSIsInVzZXJuYW1lIjoiamFuc2VuIn0.X-AQQmorfFa62Go4OwVu8b_vowvWcRU-MSqp22vNJ8w";
 class TeacherDashboard extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             nama: 'Samuel',
             kelas: 'SMA 2',
             jumlahMurid: 0,
             jumlahMateri: 0,
             jumlahSoal: 0
         }
-    } 
+    }
 
     countMurid = () => {
         fetch(`http://localhost:8080/countMurid/${this.state.kelas}`, {
@@ -22,12 +22,12 @@ class TeacherDashboard extends Component {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(response => {
-            this.setState({
-                jumlahMurid: response
+            .then(res => res.json())
+            .then(response => {
+                this.setState({
+                    jumlahMurid: response
+                })
             })
-        })
     }
 
 
@@ -39,12 +39,12 @@ class TeacherDashboard extends Component {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(response => {
-            this.setState({
-                jumlahMateri: response
+            .then(res => res.json())
+            .then(response => {
+                this.setState({
+                    jumlahMateri: response
+                })
             })
-        })
     }
 
     countSoal = () => {
@@ -55,15 +55,15 @@ class TeacherDashboard extends Component {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(response => {
-            this.setState({
-                jumlahSoal: response
+            .then(res => res.json())
+            .then(response => {
+                this.setState({
+                    jumlahSoal: response
+                })
             })
-        })
     }
 
-    
+
     componentDidMount() {
         this.countMurid();
         this.countMateri();

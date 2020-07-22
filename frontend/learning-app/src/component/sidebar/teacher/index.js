@@ -16,7 +16,7 @@ class SidebarTeacher extends Component {
                         </div>
                         <a href="/guru" className="list-group-item list-group-item-action bg-light bluehead">Dashboard</a>
                         <a href="/guru/materi" className="list-group-item list-group-item-action bg-light bluehead">Daftar Materi</a>
-                        <a href="/guru" className="list-group-item list-group-item-action bg-light bluehead">Daftar Siswa</a>
+                        <a href="/guru/daftarsiswa" className="list-group-item list-group-item-action bg-light bluehead">Daftar Siswa</a>
                         <a href="/guru" className="list-group-item list-group-item-action bg-light bluehead" data-toggle="modal" data-target="#buatSoal">Buat Soal</a>
                     </div>
                 </div>

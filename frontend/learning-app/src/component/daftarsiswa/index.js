@@ -10,39 +10,39 @@ export default function TopSearchSelect() {
                 width: 100,
             },
             {
-                label: 'Nama Kelas',
+                label: 'Nama Siswa',
+                field: 'nama',
+                width: 200,
+            },
+            {
+                label: 'Username',
+                field: 'username',
+                width: 200,
+            },
+            {
+                label: 'Kelas',
                 field: 'kelas',
-                width: 200,
-            },
-            {
-                label: 'Nama Mapel',
-                field: 'mapel',
-                width: 200,
-            },
-            {
-                label: 'Nama Modul',
-                field: 'modul',
                 width: 200,
             },
         ],
         rows: [
             {
                 id: '1',
-                kelas: 'X',
-                mapel: 'Matematika',
-                modul: 'Aljabar',
+                nama: 'Samuel Marsellino',
+                username: 'samuel',
+                kelas: 'Programming',
             },
             {
                 id: '2',
-                kelas: 'XI',
-                mapel: 'Bahasa Indonesia',
-                modul: 'Puisi',
+                nama: 'Alvian Mangalik',
+                username: 'alvian',
+                kelas: 'Programming',
             },
             {
                 id: '3',
-                kelas: 'XII',
-                mapel: 'Bahasa Inggris',
-                modul: 'Grammar',
+                nama: 'Jansen Manuel',
+                username: 'jansenmanuel',
+                kelas: 'Programming',
             },
         ],
     });
@@ -50,7 +50,7 @@ export default function TopSearchSelect() {
     return (
         <>
             <div className="container my-5">
-                <h2 className="font-weight-bold bluehead">Daftar Materi</h2>
+                <h2 className="font-weight-bold bluehead">Daftar Siswa</h2>
                 <MDBDataTableV5
                     hover
                     entriesOptions={[5, 20, 25]}

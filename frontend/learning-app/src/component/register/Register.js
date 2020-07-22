@@ -39,6 +39,7 @@ export default class Register extends Component {
             .then(res => res.json())
             .then(response => {
                 alert("Berhasil Daftar")
+                window.location.href = "/login"
             })
             .catch(console.error);
     }

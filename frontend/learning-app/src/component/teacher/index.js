@@ -6,6 +6,7 @@ import SidebarTeacher from "../sidebar/teacher";
 import TeacherDashboard from "../dashboard/teacherDashboard";
 import Materi from "../materi/teacher";
 import Modul from "../modul";
+import DaftarSiswa from '../daftarsiswa'
 
 class Teacher extends Component {
     render() {
@@ -17,6 +18,7 @@ class Teacher extends Component {
                     <Router>
                         <Switch>
                             <Route exact path="/guru" component={TeacherDashboard} />
+                            <Route path="/guru/daftarsiswa" component={DaftarSiswa} />
                             <Route exact path="/guru/materi" component={Materi} />
                             <Route path="/guru/guru/materi/modul" component={Modul} />
                             {/* <TeacherDashboard /> */}

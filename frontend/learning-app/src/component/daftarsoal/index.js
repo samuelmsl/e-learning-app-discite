@@ -5,7 +5,7 @@ const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFs
 class Soal extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             soal: [],
             jawabanMurid: [],
             jawabanBenar: [],
@@ -13,7 +13,7 @@ class Soal extends Component {
             mapel: 'Matematika',
             kelas: "SMA 2"
         }
-    } 
+    }
 
     getAllSoal = () => {
         const reqSoal = {
@@ -43,13 +43,13 @@ class Soal extends Component {
         const hasil = [];
         const jawabanBenar = this.state.jawabanBenar;
         const jawabanMurid = this.state.jawabanMurid;
-        
+
         for (let i = 0; i < jawabanBenar.length; i++) {
             if (jawabanBenar[i] == jawabanMurid[i]) {
                 hasil.push(jawabanMurid[i]);
             }
         }
-        
+
         setTimeout(() => {
             this.setState({
                 totalBenar: hasil.length
@@ -80,11 +80,11 @@ class Soal extends Component {
                     if (res.status == 200) {
                         alert("Jawaban Berhasil Disimpan")
                         window.location.reload()
-                    } 
+                    }
                 })
                 .catch(console.error)
         }, 100);
-     }
+    }
 
     isiJawaban = val => {
         this.state.jawabanMurid.push(val.target.value)
@@ -92,10 +92,10 @@ class Soal extends Component {
 
     componentDidMount() {
         this.getAllSoal()
-     }
-    
+    }
 
-     render() {
+
+    render() {
         return (
             <div>
                 {this.state.soal.map((data, key) => {
@@ -106,25 +106,25 @@ class Soal extends Component {
                                 <p>{data.question}</p>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_1" onClick={val => this.isiJawaban(val)}/>
+                                        <input type="radio" name="pilihan" value="pilihan_1" onClick={val => this.isiJawaban(val)} />
                                         A. {data.pilihan_1}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_2" onClick={val => this.isiJawaban(val)}/>
+                                        <input type="radio" name="pilihan" value="pilihan_2" onClick={val => this.isiJawaban(val)} />
                                         B. {data.pilihan_2}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_3" onClick={val => this.isiJawaban(val)}/>
+                                        <input type="radio" name="pilihan" value="pilihan_3" onClick={val => this.isiJawaban(val)} />
                                         C. {data.pilihan_3}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_4" onClick={val => this.isiJawaban(val)}/>
+                                        <input type="radio" name="pilihan" value="pilihan_4" onClick={val => this.isiJawaban(val)} />
                                         D. {data.pilihan_4}
                                     </label>
                                 </div>
@@ -132,8 +132,8 @@ class Soal extends Component {
                         </div>
                     )
                 })}
-                <button type="button" className="btn btn-success" style={{marginLeft: 75}} onClick={this.submitJawaban}>Submit</button>
-             </div>
+                <button type="button" className="btn btn-success" style={{ marginLeft: 75 }} onClick={this.submitJawaban}>Submit</button>
+            </div>
         );
     }
 }

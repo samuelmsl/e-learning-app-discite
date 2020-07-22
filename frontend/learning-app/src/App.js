@@ -4,7 +4,9 @@ import Student from './component/student/index';
 import Teacher from './component/teacher/index';
 import Dashboard from "./component/frontpage/dashboard"
 import Login from "./component/login/Login"
-import Register from './component/register/Register'
+import Register from './component/register/Register';
+const jwtToken = localStorage.jwtToken;
+
 
 function App() {
   return (

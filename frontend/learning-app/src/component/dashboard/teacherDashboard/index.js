@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./app.css";
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYW5zZW4iLCJwYXNzd29yZCI6ImphbnNlbiIsImlzcyI6Imd1cnUiLCJleHAiOjE1OTU1MTcwMTYsImlhdCI6MTU5NTM5NzAxNiwianRpIjoiMSIsInVzZXJuYW1lIjoiamFuc2VuIn0.X-AQQmorfFa62Go4OwVu8b_vowvWcRU-MSqp22vNJ8w";
+const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGljaWEiLCJwYXNzd29yZCI6ImFsaWNpYSIsImlzcyI6Imd1cnUiLCJleHAiOjE1OTU1NDMwMzgsImlhdCI6MTU5NTQyMzAzOCwianRpIjoiMyIsInVzZXJuYW1lIjoiYWxpY2lhIn0.z5GnR2cLst-ptmAKz7D607dhB8qKgi_rkEo5t3vLZJc";
 class TeacherDashboard extends Component {
     constructor(props) {
         super(props);

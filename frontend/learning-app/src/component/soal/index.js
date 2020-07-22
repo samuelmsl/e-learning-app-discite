@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import './index.css'
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFsdmlhbmlhbjIwMSIsImlzcyI6InNpc3dhIiwiZXhwIjoxNTk1NDM5OTE3LCJpYXQiOjE1OTUzMTk5MTcsImp0aSI6IjIiLCJ1c2VybmFtZSI6ImFsdmlhbjIwMSJ9.91MMn8Ri8M-2hZNW5W0QHNdICBn0-g4aPC3sV2FFv94";
+const token = "eyJhbGciOiJIsakdjasdjUzI1NiJ9.eyJzdWIiOiJhbHZpYW4yMDEiLCJwYXNzd29yZCI6ImFsdmlhbmlhbjIwMSIsImlzcyI6InNpc3dhIiwiZXhwIjoxNTk1NDM5OTE3LCJpYXQiOjE1OTUzMTk5MTcsImp0aSI6IjIiLCJ1c2VybmFtZSI6ImFsdmlhbjIwMSJ9.91MMn8Ri8M-2hZNW5W0QHNdICBn0-g4aPC3sV2FFv94";
 class Soal extends Component {
     constructor(props) {
         super(props);

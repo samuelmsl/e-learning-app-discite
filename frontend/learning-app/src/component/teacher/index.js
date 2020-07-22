@@ -6,13 +6,16 @@ import SidebarTeacher from "../sidebar/teacher";
 import TeacherDashboard from "../dashboard/teacherDashboard";
 import Materi from "../materi/teacher";
 import Modul from "../modul";
-import DaftarSiswa from '../daftarsiswa'
+import DaftarSiswa from '../daftarsiswa';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
 
 class Teacher extends Component {
     render() {
 
         const { validToken, user } = this.props.security;
-        if (user.iis != "guru") {
+        if (user.iss != "guru") {
             return(
                 <Redirect to="/murid" />
             )

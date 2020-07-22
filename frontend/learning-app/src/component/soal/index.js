@@ -10,6 +10,7 @@ class Soal extends Component {
             jawabanMurid: [],
             jawabanBenar: [],
             totalBenar: 0,
+            showNilai: null,
             mapel: 'Matematika',
             kelas: "SMA 2"
         }
@@ -44,11 +45,14 @@ class Soal extends Component {
         const jawabanBenar = this.state.jawabanBenar;
         const jawabanMurid = this.state.jawabanMurid;
         
+        console.log(this.state.jawabanMurid)
+        
         for (let i = 0; i < jawabanBenar.length; i++) {
             if (jawabanBenar[i] == jawabanMurid[i]) {
                 hasil.push(jawabanMurid[i]);
             }
         }
+        
         
         setTimeout(() => {
             this.setState({
@@ -79,15 +83,23 @@ class Soal extends Component {
                 .then(res => {
                     if (res.status == 200) {
                         alert("Jawaban Berhasil Disimpan")
-                        window.location.reload()
                     } 
                 })
                 .catch(console.error)
+                
+                const showNilaiTemp = <div style={{marginLeft: 75, marginTop: 30}}>
+                    <h4>Nilai</h4>
+                    <h4 style={{color: "green"}}>{this.state.totalBenar}/{this.state.soal.length}</h4>
+                </div>;
+
+            this.setState({
+                showNilai: showNilaiTemp
+            })
         }, 100);
      }
 
-    isiJawaban = val => {
-        this.state.jawabanMurid.push(val.target.value)
+    isiJawaban = (val, index) => {
+        this.state.jawabanMurid[index] = val.target.value;
     }
 
     componentDidMount() {
@@ -106,25 +118,25 @@ class Soal extends Component {
                                 <p>{data.question}</p>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_1" onClick={val => this.isiJawaban(val)}/>
+                                        <input type="radio" name={key} value="pilihan_1" onClick={val => this.isiJawaban(val, key)}/>
                                         A. {data.pilihan_1}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_2" onClick={val => this.isiJawaban(val)}/>
+                                        <input type="radio" name={key} value="pilihan_2" onClick={val => this.isiJawaban(val, key)}/>
                                         B. {data.pilihan_2}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_3" onClick={val => this.isiJawaban(val)}/>
+                                        <input type="radio" name={key} value="pilihan_3" onClick={val => this.isiJawaban(val, key)}/>
                                         C. {data.pilihan_3}
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="radio" name="pilihan" value="pilihan_4" onClick={val => this.isiJawaban(val)}/>
+                                        <input type="radio" name={key} value="pilihan_4" onClick={val => this.isiJawaban(val, key)}/>
                                         D. {data.pilihan_4}
                                     </label>
                                 </div>
@@ -133,6 +145,7 @@ class Soal extends Component {
                     )
                 })}
                 <button type="button" className="btn btn-success" style={{marginLeft: 75}} onClick={this.submitJawaban}>Submit</button>
+                {this.state.showNilai}
              </div>
         );
     }

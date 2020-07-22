@@ -28,17 +28,21 @@ public class Modul {
     @Column(nullable = false, length = 40)
     private String url;
 
+    @Column(nullable = false, length = 40)
+    private String nama_modul;
+
     public Modul() {
 
     }
 
-    public Modul(String fileName, String fileType, byte[] data, String namaKelas, String namaMapel,String url) {
+    public Modul(String fileName, String fileType, byte[] data, String namaKelas, String namaMapel,String url, String namaModul) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
         this.nama_mapel = namaMapel;
         this.nama_kelas = namaKelas;
         this.url = url;
+        this.nama_modul = namaModul;
     }
 
     public long getId() {
@@ -47,6 +51,14 @@ public class Modul {
 
     public String getMapel() {
         return nama_mapel;
+    }
+
+    public String getNama_mapel() {
+        return nama_mapel;
+    }
+
+    public String getNama_modul() {
+        return nama_modul;
     }
 
     public String getNama_kelas() {

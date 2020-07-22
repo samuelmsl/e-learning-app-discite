@@ -16,14 +16,14 @@ public class ModulService {
     @Autowired
     private ModulRepository modulRepository;
 
-    public Modul storeFile(MultipartFile file, String namaMapel, String namaKelas, String url) {
+    public Modul storeFile(MultipartFile file, String namaMapel, String namaKelas, String url, String namaModul) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             if (fileName.contains("..")) {
                 throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
-            Modul modul = new Modul(fileName, file.getContentType(), file.getBytes(), namaKelas, namaMapel, url);
+            Modul modul = new Modul(fileName, file.getContentType(), file.getBytes(), namaKelas, namaMapel, url, namaModul);
             return modulRepository.save(modul);
         } catch (IOException e) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", e);

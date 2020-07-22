@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nexsoft.discite.Dto.CountModulRequest;
 import com.nexsoft.discite.Dto.MapelReponse;
+import com.nexsoft.discite.Dto.ModulByJudulRequest;
 import com.nexsoft.discite.Entity.Mapel;
 import com.nexsoft.discite.Entity.Modul;
 import com.nexsoft.discite.Repository.ModulRepository;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -34,10 +36,10 @@ public class ModulController {
 
     @PostMapping("/uploadFile")
     public MapelReponse uploadFile(@RequestPart("files") MultipartFile file, @RequestPart("mapel") String namaMapel,
-                                    @RequestPart("kelas") String namaKelas, @RequestPart("url") String url) {
+                                    @RequestPart("kelas") String namaKelas, @RequestPart("url") String url, @RequestPart("judul") String namaModul) {
 
 
-        Modul fileName = modulService.storeFile(file, namaMapel, namaKelas, url);
+        Modul fileName = modulService.storeFile(file, namaMapel, namaKelas, url, namaModul);
 
         String fileDownloadUri  = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
@@ -57,6 +59,22 @@ public class ModulController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + modul.getFileName() + "\"")
                 .body(new ByteArrayResource(modul.getData()));
     }
+
+    @GetMapping("/modul")
+    public List<Modul> getAllModul() {
+        return modulRepository.findAll();
+    }
+
+    @PostMapping("/modulByKelas")
+    public List<Modul> getModulByKelas(@RequestBody CountModulRequest modulRequest) {
+        return modulRepository.getModulByKelas(modulRequest.getNama_kelas(), modulRequest.getNama_mapel());
+    }
+
+    @PostMapping("/modulByJudul")
+    public List<Modul> getModulByJudul(@RequestBody ModulByJudulRequest modulRequest) {
+        return modulRepository.getModulByJudul(modulRequest.getNama_kelas(), modulRequest.getNama_mapel(), modulRequest.getNama_modul());
+    }
+
 
     @PostMapping("/countModul")
     public Integer countModul(@RequestBody CountModulRequest modulRequest) {

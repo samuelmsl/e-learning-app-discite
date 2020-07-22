@@ -35,7 +35,9 @@ public class Soal {
     @Column(nullable = false, length = 10)
     private String jawaban;
 
-    @OneToOne()
-    @JoinColumn(name = "id_mapel", nullable = false)
-    private Mapel mapel;
+    @Column(nullable = false, length = 10)
+    private String nama_kelas;
+
+    @Column(nullable = false, length = 10)
+    private String nama_mapel;
 }

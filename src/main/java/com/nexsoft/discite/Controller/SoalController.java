@@ -1,5 +1,6 @@
 package com.nexsoft.discite.Controller;
 
+import com.nexsoft.discite.Dto.CountModulRequest;
 import com.nexsoft.discite.Entity.Mapel;
 import com.nexsoft.discite.Entity.Soal;
 import com.nexsoft.discite.Repository.SoalRepository;
@@ -45,5 +46,20 @@ public class SoalController {
     private String deleteSoal(@PathVariable long id) {
         soalRepository.deleteById(id);
         return "Data Berhasil Dihapus";
+    }
+
+    @PostMapping("/countSoal")
+    public Integer countSoal(@RequestBody CountModulRequest modulRequest) {
+        return soalRepository.countSoal(modulRequest.getNama_mapel(), modulRequest.getNama_kelas());
+    }
+
+    @PostMapping("/soalByNama")
+    public List<Soal> getSoalByNama(@RequestBody CountModulRequest modulRequest) {
+        return soalRepository.getSoalByNama(modulRequest.getNama_mapel(), modulRequest.getNama_kelas());
+    }
+
+    @GetMapping("/countSoal/{kelas}")
+    public Integer countSoalByKelas(@PathVariable String kelas) {
+        return soalRepository.countSoalByKelas(kelas);
     }
 }

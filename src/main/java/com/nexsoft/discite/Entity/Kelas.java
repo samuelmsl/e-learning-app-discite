@@ -24,4 +24,8 @@ public class Kelas {
     @JsonIgnore
     @OneToOne(mappedBy = "kelas")
     private Mapel mapel;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "mapel")
+    private Jawaban jawaban;
 }

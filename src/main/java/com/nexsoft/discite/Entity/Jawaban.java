@@ -23,12 +23,12 @@ public class Jawaban {
 
     @OneToOne()
     @JoinColumn(name = "id_mapel", nullable = false)
-    private Modul modul;
+    private Mapel mapel;
 
     @OneToOne()
     @JoinColumn(name = "id_kelas", nullable = false)
     private Kelas kelas;
 
     @Column(nullable = false, name = "nilai", length = 4)
-    private Double nilai;
+    private int nilai;
 }

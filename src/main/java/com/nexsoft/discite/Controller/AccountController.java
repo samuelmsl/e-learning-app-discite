@@ -1,5 +1,7 @@
 package com.nexsoft.discite.Controller;
 
+import com.nexsoft.discite.Dto.CountModulRequest;
+import com.nexsoft.discite.Dto.CountMuridRequest;
 import com.nexsoft.discite.Dto.LoginRequest;
 import com.nexsoft.discite.Dto.LoginResponse;
 import com.nexsoft.discite.Entity.Account;
@@ -8,10 +10,7 @@ import com.nexsoft.discite.Util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -46,4 +45,10 @@ public class AccountController {
         }
         return jwtUtil.generateToken(account.getUsername());
     }
+
+    @GetMapping("/countMurid/{kelas}")
+    public Integer countMurid(@PathVariable String kelas) {
+        return accountRepository.countMurid(kelas);
+    }
+
 }

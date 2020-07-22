@@ -27,5 +27,5 @@ public class Mapel {
 
     @JsonIgnore
     @OneToOne(mappedBy = "mapel")
-    private Soal soal;
+    private Jawaban jawaban;
 }

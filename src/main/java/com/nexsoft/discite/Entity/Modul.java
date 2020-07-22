@@ -19,9 +19,8 @@ public class Modul {
     @Lob
     private byte[] data;
 
-    @OneToOne()
-    @JoinColumn(name = "id_mapel", nullable = false)
-    private Mapel mapel;
+    @Column(nullable = false, length = 30)
+    private String nama_mapel;
 
     @Column(nullable = false, length = 30)
     private String nama_kelas;
@@ -33,12 +32,12 @@ public class Modul {
 
     }
 
-    public Modul(String fileName, String fileType, byte[] data, String namaMapel, Mapel mapel, String url) {
+    public Modul(String fileName, String fileType, byte[] data, String namaKelas, String namaMapel,String url) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
-        this.mapel = mapel;
-        this.nama_kelas = namaMapel;
+        this.nama_mapel = namaMapel;
+        this.nama_kelas = namaKelas;
         this.url = url;
     }
 
@@ -46,8 +45,8 @@ public class Modul {
         return id;
     }
 
-    public Mapel getMapel() {
-        return mapel;
+    public String getMapel() {
+        return nama_mapel;
     }
 
     public String getNama_kelas() {

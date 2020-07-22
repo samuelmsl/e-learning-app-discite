@@ -12,18 +12,18 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @Service
-public class MapelService {
+public class ModulService {
     @Autowired
     private ModulRepository modulRepository;
 
-    public Modul storeFile(MultipartFile file, Mapel mapel, String namaKelas, String url) {
+    public Modul storeFile(MultipartFile file, String namaMapel, String namaKelas, String url) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             if (fileName.contains("..")) {
                 throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
-            Modul modul = new Modul(fileName, file.getContentType(), file.getBytes(), namaKelas, mapel, url);
+            Modul modul = new Modul(fileName, file.getContentType(), file.getBytes(), namaKelas, namaMapel, url);
             return modulRepository.save(modul);
         } catch (IOException e) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", e);

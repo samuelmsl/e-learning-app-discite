@@ -6,18 +6,18 @@ const jwtDecode = require('jwt-decode');
 const token = localStorage.getItem("jwtToken");
 let decodeToken = '';
 if (token != null) {
-     decodeToken = jwtDecode(token);
-     console.log(decodeToken);
+    decodeToken = jwtDecode(token);
+    console.log(decodeToken);
 }
 
 class SidebarStudent extends Component {
     // state = {  }
-            constructor(props) {
-                super(props);
-                this.state = {
-                    nama: decodeToken.sub
-                }
-            }
+    constructor(props) {
+        super(props);
+        this.state = {
+            nama: decodeToken.jti
+        }
+    }
     render() {
         return (
             <>

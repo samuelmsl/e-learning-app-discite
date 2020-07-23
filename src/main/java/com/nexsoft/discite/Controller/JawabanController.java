@@ -18,6 +18,11 @@ public class JawabanController {
         return jawabanRepository.findAll();
     }
 
+    @GetMapping("/jawabanByKelas/{kelas}")
+    private List<Jawaban> getAllJawabanByKelas(@PathVariable String kelas) {
+        return jawabanRepository.findAllByKelas(kelas);
+    }
+
     @GetMapping("/jawaban/{id}")
     private Jawaban getJawabanById(@PathVariable long id) {
         return jawabanRepository.findById(id).orElse(null);

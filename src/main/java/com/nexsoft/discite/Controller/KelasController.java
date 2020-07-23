@@ -13,9 +13,9 @@ public class KelasController {
     @Autowired
     private KelasRepository kelasRepository;
 
-    @GetMapping("/kelas")
+    @GetMapping("/public/kelas")
     private List<Kelas> getAllKelas() {
-        return kelasRepository.findAll();
+        return kelasRepository.findAllAsc();
     }
 
     @GetMapping("/kelas/{id}")

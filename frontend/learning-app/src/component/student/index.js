@@ -9,6 +9,7 @@ import DaftarMateri from "../daftarmateri"
 import Materi from '../materi/student';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import './app.css';
 
 // import Matematika from "../submapel/matematika"
 // import BahasaIndonesia from "../submapel/bahasaIndonesia"
@@ -25,7 +26,7 @@ class Student extends Component {
         return (
             <>
                 <Navbar />
-                <div className="d-flex " id="wrapper">
+                <div className="thismain d-flex " id="wrapper">
                     <SidebarStudent />
                     <Router>
                         <Switch>

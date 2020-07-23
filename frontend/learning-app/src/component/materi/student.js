@@ -95,7 +95,7 @@ export default class student extends Component {
                     </div>  
                     <div class="card-body ">
                         {this.state.showMateri}
-                        <div style={{ width: "100%", height: "100%", border: "none"}} className = "pdf-model" id="pdf" />
+                        <div style={{ width: "100%", height: "1200px", border: "none"}} className = "pdf-model" id="pdf" />
                     </div>
                 </div>
             </>

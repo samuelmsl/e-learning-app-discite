@@ -25,6 +25,8 @@ export const login = LoginRequest => async dispatch => {
     });
   } catch (err) {
   alert("Username or Password is Invalid !")
+  localStorage.removeItem("jwtToken");
+  setJWTToken(false);
   }
 };
 

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import Ava from "../../img/avaprofil.png"
 import BuatSoal from './BuatSoal';
+const jwtDecode = require('jwt-decode');
 
+const token = localStorage.getItem("jwtToken");
+let decodeToken = '';
+if (token != null) {
+     decodeToken = jwtDecode(token);
+}
 class SidebarTeacher extends Component {
     // state = {  }
     render() {
@@ -12,7 +18,7 @@ class SidebarTeacher extends Component {
                     <div className="list-group list-group-flush mt">
                         <div className="d-flex justify-content-center mt-4">
                             <img src={Ava} width="70" height="70" alt=""></img>
-                            <h4 className="mt-2 ml-3">Samuel Marsellino</h4>
+                            <h4 className="mt-2 ml-3">{decodeToken.jti}</h4>
                         </div>
                         <a href="/guru" className="list-group-item list-group-item-action bg-light bluehead">Dashboard</a>
                         <a href="/guru/materi" className="list-group-item list-group-item-action bg-light bluehead">Daftar Materi</a>

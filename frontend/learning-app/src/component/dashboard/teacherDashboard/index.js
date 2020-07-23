@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import "./app.css";
+const jwtDecode = require('jwt-decode');
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGljaWEiLCJwYXNzd29yZCI6ImFsaWNpYSIsImlzcyI6Imd1cnUiLCJleHAiOjE1OTU1NDMwMzgsImlhdCI6MTU5NTQyMzAzOCwianRpIjoiMyIsInVzZXJuYW1lIjoiYWxpY2lhIn0.z5GnR2cLst-ptmAKz7D607dhB8qKgi_rkEo5t3vLZJc";
+const token = localStorage.getItem("jwtToken");
+let decodeToken = '';
+if (token != null) {
+     decodeToken = jwtDecode(token);
+}
 class TeacherDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nama: 'Samuel',
-            kelas: 'SMA 2',
+            nama: decodeToken.jti,
+            kelas: decodeToken.aud,
             jumlahMurid: 0,
             jumlahMateri: 0,
             jumlahSoal: 0

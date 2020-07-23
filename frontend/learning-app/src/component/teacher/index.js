@@ -7,9 +7,7 @@ import TeacherDashboard from "../dashboard/teacherDashboard";
 import Materi from "../materi/teacher";
 import Modul from "../modul";
 import DaftarSiswa from '../daftarsiswa';
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
 
 class Teacher extends Component {
     render() {

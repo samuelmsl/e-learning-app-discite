@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PDFObject from 'pdfobject';
-import android from './android.pdf'
 const jwtDecode = require('jwt-decode');
 
 const token = localStorage.getItem("jwtToken");
@@ -68,7 +67,7 @@ export default class student extends Component {
         
      }
 
-    blobToFile = blobData => {
+    blobToFile = blobData => { 
         const byteCharacters = atob(blobData);
         let binaryLen = byteCharacters.length;
         let bytes = new Uint8Array(binaryLen);

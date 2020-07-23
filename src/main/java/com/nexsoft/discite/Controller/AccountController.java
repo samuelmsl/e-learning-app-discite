@@ -12,6 +12,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AccountController {
@@ -51,4 +53,13 @@ public class AccountController {
         return accountRepository.countMurid(kelas);
     }
 
+    @GetMapping("/account")
+    public List<Account> getAllAccount() {
+        return accountRepository.findAll();
+    }
+
+    @GetMapping("/account/{kelas}")
+    public List<Account> getAccountByType(@PathVariable String kelas) {
+        return accountRepository.getAccountByType(kelas);
+    }
 }

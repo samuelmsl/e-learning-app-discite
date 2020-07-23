@@ -15,6 +15,9 @@ public interface ModulRepository extends JpaRepository<Modul, Long> {
     @Query("select count(m) from Modul m where m.nama_kelas = ?1")
     Integer countModulByKelas(String namaKelas);
 
+    @Query("select m from Modul m where m.nama_kelas = ?1")
+    List<Modul> getAllModulByKelas(String nama_kelas);
+
     @Query("select m from Modul m where m.nama_kelas = ?1 and m.nama_mapel = ?2")
     List<Modul> getModulByKelas(String nama_kelas, String nama_mapel);
 

@@ -65,6 +65,11 @@ public class ModulController {
         return modulRepository.findAll();
     }
 
+    @GetMapping("/modul/{kelas}")
+    public List<Modul> getAllModulByKelas(@PathVariable String kelas) {
+        return modulRepository.getAllModulByKelas(kelas);
+    }
+
     @PostMapping("/modulByKelas")
     public List<Modul> getModulByKelas(@RequestBody CountModulRequest modulRequest) {
         return modulRepository.getModulByKelas(modulRequest.getNama_kelas(), modulRequest.getNama_mapel());

@@ -7,7 +7,7 @@ export default class Register extends Component {
     state = {
         nama: '',
         pasword: '',
-        type: 'siswa',
+        type: 'murid',
         username: '',
         kelas: ''
     }

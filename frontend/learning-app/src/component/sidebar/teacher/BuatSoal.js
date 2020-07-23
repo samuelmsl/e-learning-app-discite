@@ -37,8 +37,22 @@ export default class BuatSoal extends Component {
         };
 
         console.log(soal);
-
-        fetch(`http://localhost:8080/addSoal`, {
+        if (this.state.nama_mapel == "") {
+            alert("Mata Pelajaran tidak boleh kosong!")
+        } else if (this.state.question == "") {
+            alert("Soal tidak boleh kosong!")
+        } else if (this.state.pilihan_1 == "") {
+            alert("Pilihan 1 tidak boleh kosong!")
+        } else if (this.state.pilihan_2 == "") {
+            alert("Pilihan 2 tidak boleh kosong!")
+        } else if (this.state.pilihan_3 == "") {
+            alert("Pilihan 3 tidak boleh kosong!")
+        } else if (this.state.pilihan_4 == "") {
+            alert("Pilihan 4 tidak boleh kosong!")
+        } else if (this.state.jawaban == "") {
+            alert("Jawaban tidak boleh kosong!")
+        } else {
+            fetch(`http://localhost:8080/addSoal`, {
             method: "POST",
             body: JSON.stringify(soal),
             headers: {
@@ -51,6 +65,7 @@ export default class BuatSoal extends Component {
                     alert("Berhasil Membuat Soal!")
                 }
             })
+        }
     }
 
     render() {

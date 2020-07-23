@@ -92,7 +92,7 @@ export default class TopSearchSelect extends Component {
         return (
             <>
                 <div className="container my-5">
-                    <h2 className="font-weight-bold bluehead">Daftar Siswa</h2>
+                    <h2 className="font-weight-bold bluehead">Daftar Nilai</h2>
                     {this.state.showData}
                 </div>
             </>

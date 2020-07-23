@@ -121,42 +121,42 @@ class Soal extends Component {
      render() {
         return (
             <div>
-                {this.state.soal.map((data, key) => {
-                    this.state.jawabanBenar.push(data.jawaban)
-                    return (
-                        <div className="soalContainer" key={key}>
-                            <div className="soalbox">
-                                <p>{data.question}</p>
-                                <div>
-                                    <label>
-                                        <input type="radio" name={key} value="pilihan_1" onClick={val => this.isiJawaban(val, key)}/>
-                                        A. {data.pilihan_1}
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input type="radio" name={key} value="pilihan_2" onClick={val => this.isiJawaban(val, key)}/>
-                                        B. {data.pilihan_2}
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input type="radio" name={key} value="pilihan_3" onClick={val => this.isiJawaban(val, key)}/>
-                                        C. {data.pilihan_3}
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input type="radio" name={key} value="pilihan_4" onClick={val => this.isiJawaban(val, key)}/>
-                                        D. {data.pilihan_4}
-                                    </label>
+                    {this.state.soal.map((data, key) => {
+                        this.state.jawabanBenar.push(data.jawaban)
+                        return (
+                            <div className="soalContainer" key={key}>
+                                <div className="soalbox">
+                        <p>{data.question}</p>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name={key} value="pilihan_1" onClick={val => this.isiJawaban(val, key)}/>
+                                            A. {data.pilihan_1}
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name={key} value="pilihan_2" onClick={val => this.isiJawaban(val, key)}/>
+                                            B. {data.pilihan_2}
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name={key} value="pilihan_3" onClick={val => this.isiJawaban(val, key)}/>
+                                            C. {data.pilihan_3}
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name={key} value="pilihan_4" onClick={val => this.isiJawaban(val, key)}/>
+                                            D. {data.pilihan_4}
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })}
-                <button type="button" className="btn btn-success" style={{marginLeft: 75}} onClick={this.submitJawaban}>Submit</button>
-                {this.state.showNilai}
+                        )
+                    })}
+                    <button type="button" className="btn btn-success" style={{marginLeft: 75}} onClick={this.submitJawaban}>Submit</button>
+                    {this.state.showNilai}
              </div>
         );
     }

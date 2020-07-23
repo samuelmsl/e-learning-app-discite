@@ -119,10 +119,10 @@ export default class BuatSoal extends Component {
                                 <div className="form-group form-group">
                                     <select className="custom-select" name="jawaban" required onChange={this.handleChange}>
                                         <option selected disabled>Jawaban</option>
-                                        <option name="pilihan_1">A</option>
-                                        <option name="pilihan_2">B</option>
-                                        <option name="pilihan_3">C</option>
-                                        <option name="pilihan_3">D</option>
+                                        <option value="pilihan_1">A</option>
+                                        <option value="pilihan_2">B</option>
+                                        <option value="pilihan_3">C</option>
+                                        <option value="pilihan_3">D</option>
                                     </select>
                                 </div>
                                 <div className="modal-footer">

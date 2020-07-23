@@ -54,6 +54,7 @@ export default class Register extends Component {
                 this.setState({
                     kelasTemp: response
                 })
+                console.log(this.state.kelasTemp);
             })
     }
 

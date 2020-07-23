@@ -7,6 +7,7 @@ import TeacherDashboard from "../dashboard/teacherDashboard";
 import Materi from "../materi/teacher";
 import Modul from "../modul";
 import DaftarSiswa from '../daftarsiswa';
+import DaftarNilai from '../daftarnilai';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -31,6 +32,7 @@ class Teacher extends Component {
                             <Route path="/guru/daftarsiswa" component={DaftarSiswa} />
                             <Route exact path="/guru/materi" component={Materi} />
                             <Route path="/guru/guru/materi/modul" component={Modul} />
+                            <Route path="/guru/daftarnilai" component={DaftarNilai} />
                             {/* <TeacherDashboard /> */}
                         </Switch>
                     </Router>

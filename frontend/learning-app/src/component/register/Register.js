@@ -3,13 +3,16 @@ import './Register.css'
 import { Link } from 'react-router-dom'
 import registerImage from '../img/registersvg.svg'
 
+const token = localStorage.getItem("jwtToken");
 export default class Register extends Component {
     state = {
         nama: '',
         pasword: '',
         type: 'murid',
         username: '',
-        kelas: ''
+        kelas: '',
+        listKelas: null,
+        kelasTemp: []
     }
 
     handleChange = event => {
@@ -44,6 +47,16 @@ export default class Register extends Component {
             .catch(console.error);
     }
 
+    componentDidMount() {
+        fetch("http://localhost:8080/public/kelas")
+            .then(res => res.json())
+            .then(response => {
+                this.setState({
+                    kelasTemp: response
+                })
+            })
+    }
+
     render() {
         return (
             <>
@@ -65,9 +78,11 @@ export default class Register extends Component {
                                     <input type="password" className="form-control my-3" name="password" id="password" maxLength="30" placeholder="Password" required onChange={this.handleChange} />
                                     <select className="form-control my-3" name="kelas" id="kelas" onChange={this.handleChange}>
                                         <option selected disabled>~ Kelas ~</option>
-                                        <option value="SD">SD</option>
-                                        <option value="SMP">SMP</option>
-                                        <option value="SMA">SMA</option>
+                                        {this.state.kelasTemp.map((data, index) => {
+                                            return (
+                                                <option value={data.nama_kelas}>{data.nama_kelas}</option>
+                                            )
+                                        })}
                                     </select>
                                     <button type="submit" className="btn register-btn px-3 mb-3" onClick={this.handleSubmit}>Register</button>
                                     <p className="text-light" style={{ fontSize: 15 }}>Sudah punya akun? <Link to="/login" className="text-light">Login</Link> </p>

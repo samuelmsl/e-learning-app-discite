@@ -18,7 +18,7 @@ class Navbar extends Component {
                 </a>
                 <div className="d-flex justify-content-between mr-3">
                 <Link to="/" className="ml-4">
-                        <button onClick = {this.logout.bind(this)} to = "/" className="logout-button " style = {{border:"noneY"}} >
+                        <button onClick = {this.logout.bind(this)} to = "/" className="logout-button " style = {{border:"none"}} >
                         <strong className="ml-1 bluetext" >Logout</strong>
                         </button>
                     </Link>

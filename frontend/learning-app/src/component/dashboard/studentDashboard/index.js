@@ -5,12 +5,13 @@ const token = localStorage.getItem("jwtToken");
 let decodeToken = '';
 if (token != null) {
      decodeToken = jwtDecode(token);
+     console.log(decodeToken);
 }
 class StudentDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nama: decodeToken.jti
+            nama: decodeToken.sub
         }
     }
 

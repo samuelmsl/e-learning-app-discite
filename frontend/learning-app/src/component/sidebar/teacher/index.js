@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Ava from "../../img/avaprofil.png"
 import BuatSoal from './BuatSoal';
+import BuatModul from './BuatModul';
 const jwtDecode = require('jwt-decode');
 
 const token = localStorage.getItem("jwtToken");
 let decodeToken = '';
 if (token != null) {
-     decodeToken = jwtDecode(token);
+    decodeToken = jwtDecode(token);
 }
 class SidebarTeacher extends Component {
     // state = {  }
@@ -24,10 +25,14 @@ class SidebarTeacher extends Component {
                         <a href="/guru/materi" className="list-group-item list-group-item-action bg-light bluehead">Daftar Materi</a>
                         <a href="/guru/daftarsiswa" className="list-group-item list-group-item-action bg-light bluehead">Daftar Siswa</a>
                         <a href="/guru" className="list-group-item list-group-item-action bg-light bluehead" data-toggle="modal" data-target="#buatSoal">Buat Soal</a>
+                        <a href="/guru" className="list-group-item list-group-item-action bg-light bluehead" data-toggle="modal" data-target="#buatModul">Buat Modul</a>
                     </div>
                 </div>
                 <div className="modal fade" id="buatSoal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <BuatSoal />
+                </div>
+                <div className="modal fade" id="buatModul" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <BuatModul />
                 </div>
                 {/* </div> */}
             </>

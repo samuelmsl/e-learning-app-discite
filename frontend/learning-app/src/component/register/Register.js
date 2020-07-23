@@ -38,7 +38,7 @@ export default class Register extends Component {
         })
             .then(res => res.json())
             .then(response => {
-                alert("Berhasil Daftar")
+                alert("Berhasil Daftar!")
                 window.location.href = "/login"
             })
             .catch(console.error);
@@ -63,7 +63,12 @@ export default class Register extends Component {
                                     <input type="text" className="form-control my-3" name="nama" id="nama" placeholder="Nama" maxLength="30" autoComplete="off" required onChange={this.handleChange} />
                                     <input type="text" className="form-control my-3" name="username" id="username" placeholder="Username" maxLength="30" autoComplete="off" required onChange={this.handleChange} />
                                     <input type="password" className="form-control my-3" name="password" id="password" maxLength="30" placeholder="Password" required onChange={this.handleChange} />
-                                    <input type="text" className="form-control my-3" name="kelas" id="id_kelas" placeholder="Kelas" maxLength="20" autoComplete="off" required onChange={this.handleChange} />
+                                    <select className="form-control my-3" name="kelas" id="kelas" onChange={this.handleChange}>
+                                        <option selected disabled>~ Kelas ~</option>
+                                        <option value="SD">SD</option>
+                                        <option value="SMP">SMP</option>
+                                        <option value="SMA">SMA</option>
+                                    </select>
                                     <button type="submit" className="btn register-btn px-3 mb-3" onClick={this.handleSubmit}>Register</button>
                                     <p className="text-light" style={{ fontSize: 15 }}>Sudah punya akun? <Link to="/login" className="text-light">Login</Link> </p>
                                 </div>

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./app.css";
-const jwtDecode = require('jwt-decode');
 
+const jwtDecode = require('jwt-decode');
 const token = localStorage.getItem("jwtToken");
 let decodeToken = '';
 if (token != null) {
-     decodeToken = jwtDecode(token);
+    decodeToken = jwtDecode(token);
 }
+
 class TeacherDashboard extends Component {
     constructor(props) {
         super(props);
@@ -79,7 +80,7 @@ class TeacherDashboard extends Component {
         return (
             <div id="page-content-wrapper">
                 <div className="container mt-5 ml-5">
-                    <h2 className="mt-4 font-weight-bold bluehead">Selamat Datang, {this.state.nama}</h2>
+                    <h2 className="mt-4 font-weight-bold bluehead">Selamat Datang, {this.state.nama}!</h2>
                     <div className="d-flex justify-content-between mt-5">
                         <div className="card-one">
                             <div className="d-flex justify-content-between mt-2">

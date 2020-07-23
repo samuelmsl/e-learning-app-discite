@@ -22,7 +22,7 @@ class SidebarStudent extends Component {
         return (
             <>
                 {/* <div className="d-flex" id="wrapper"> */}
-                <div className="bg-light col-md-2 bluehead" id="sidebar-wrapper" style={{ left: "0", top: "0", height: "800px" }}>
+                <div className="thismains bg-light col-md-2 bluehead" id="sidebar-wrapper" style={{ left: "0", top: "0", height: "800px" }}>
                     <div className="list-group list-group-flush mt">
                         <div className="d-flex justify-content-center mt-4">
                             <img src={Ava} width="70" height="70" alt=""></img>

@@ -7,6 +7,7 @@ import TeacherDashboard from "../dashboard/teacherDashboard";
 import Materi from "../materi/teacher";
 import Modul from "../modul";
 import DaftarSiswa from '../daftarsiswa';
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 class Teacher extends Component {
@@ -40,9 +41,9 @@ class Teacher extends Component {
     }
 }
 
-// Teacher.propTypes = {
-//     security: PropTypes.object.isRequired
-// };
+Teacher.propTypes = {
+    security: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
     security: state.security

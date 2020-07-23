@@ -6,6 +6,7 @@ const token = localStorage.getItem("jwtToken");
 let decodeToken = '';
 if (token != null) {
      decodeToken = jwtDecode(token);
+     console.log(decodeToken);
 }
 class TeacherDashboard extends Component {
     constructor(props) {

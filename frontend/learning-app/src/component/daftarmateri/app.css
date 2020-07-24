@@ -61,3 +61,7 @@
     color: #5A95E9;
 }
 
+.mycard:hover {
+    cursor: pointer;
+} 
+

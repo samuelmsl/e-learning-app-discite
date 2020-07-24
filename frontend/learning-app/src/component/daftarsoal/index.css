@@ -1,31 +1,4 @@
-.soalContainer{
-    display: flex;
+.cardsoal {
     justify-content: center;
-    display: block;
-    flex-wrap: wrap;
-}
-
-.soalbox{
-    width: 90%;
-    height: auto;
-    margin: 75px;
-    border-radius: 2;
-    background-color: #f1f1f1;
-}
-
-.soalbox p {
-    font-weight: bold;
-    margin: 20px 20px;
-}
-
-.soalbox input {
-    margin-left: 30px;
-    margin-right: 10px;
-    margin-top: 20px;
-    outline: none;
-    border: none;
-}
-
-.soalbox input:focus {
-    outline: none;
+    width: 1000px;
 }

@@ -26,7 +26,12 @@ export default class BuatModul extends Component {
     }
 
     handleFile = event => {
+        let file = event.target.value;
+        console.log(file);
+        let pdf = toString()
+        console.log(pdf);
         this.setState({
+            
             selectedFile: event.target.files[0]
         })
     }

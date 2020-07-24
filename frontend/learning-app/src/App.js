@@ -7,12 +7,13 @@ import Login from "./component/login/Login"
 import Register from './component/register/Register'
 import Soal from './component/soal'
 import { Provider } from 'react-redux';
-import store from "./store";
+import {store, persistor} from "./store";
 import SecuredRoute from "./component/security/SecureRouter"
 import setJWTToken from './component/security/setJWTToken';
 import jwt_decode from 'jwt-decode';
 import {SET_CURRENT_USER} from "./component/actions/types";
 import {logout} from "./component/actions/securityActions";
+import { PersistGate } from 'redux-persist/integration/react';
 
 const jwtToken = localStorage.jwtToken;
 
@@ -37,6 +38,7 @@ function App() {
   return (
     <div className="App">
        <Provider store ={store}>
+<PersistGate loading = {null} persistor = {persistor}>
 
       <Router>
         <Route exact path="/" component={Dashboard} />
@@ -45,6 +47,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
       </Router>
+</PersistGate>
        </Provider>
     </div>
   );

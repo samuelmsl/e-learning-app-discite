@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
 import "./app.css";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import {Redirect} from "react-router-dom"
+
+
 
 class Dashboard extends Component {
+
+    componentDidMount(){
+        const { validToken, user } = this.props.security;
+            if (validToken == true && user.iss == "murid") {
+                window.location.href = "/murid"
+            }
+            else if (validToken == true && user.iss == "guru") {
+                window.location.href = "/guru"
+            }
+    }
+
     render() {
+        
+
+            
+
         return (
             <>
                 <div id="initFront">
@@ -18,12 +38,12 @@ class Dashboard extends Component {
                         </h1>
 
                             <div className="buttonlogin ml-5 mt-4 bluetext d-flex justify-content-center align-items-center">
-                                <a href="/register">Daftar Sekarang</a>
+                                <a href="/register" style={{ textDecoration: "none" }}>Daftar Sekarang</a>
                             </div>
                             <h3 className="ml-5 mt-4">Sudah memiliki akun?</h3>
 
                             <div className="buttonlogin ml-5 mt-4 bluetext d-flex justify-content-center align-items-center">
-                                <a href="/login">Masuk</a>
+                                <a href="/login" style={{ textDecoration: "none" }}>Masuk</a>
                             </div>
                         </div>
                     </div>
@@ -33,6 +53,17 @@ class Dashboard extends Component {
 
         );
     }
+// }
 }
 
-export default Dashboard;
+Dashboard.propTypes = {
+    security: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    security: state.security
+});
+
+export default connect(
+    mapStateToProps,
+)(Dashboard);

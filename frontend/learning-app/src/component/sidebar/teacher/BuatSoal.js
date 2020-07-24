@@ -5,7 +5,7 @@ const token = localStorage.getItem("jwtToken");
 let decodeToken = '';
 if (token != null) {
     decodeToken = jwtDecode(token);
-    console.log(decodeToken);
+    // console.log(decodeToken);
 }
 
 export default class BuatSoal extends Component {
@@ -53,18 +53,19 @@ export default class BuatSoal extends Component {
             alert("Jawaban tidak boleh kosong!")
         } else {
             fetch(`http://localhost:8080/addSoal`, {
-            method: "POST",
-            body: JSON.stringify(soal),
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => {
-                if (res.status == 200) {
-                    alert("Berhasil Membuat Soal!")
+                method: "POST",
+                body: JSON.stringify(soal),
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
                 }
             })
+                .then(res => {
+                    if (res.status == 200) {
+                        alert("Berhasil Membuat Soal!")
+                        window.location.reload()
+                    }
+                })
         }
     }
 

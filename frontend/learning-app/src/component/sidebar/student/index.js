@@ -7,7 +7,7 @@ const token = localStorage.getItem("jwtToken");
 let decodeToken = '';
 if (token != null) {
     decodeToken = jwtDecode(token);
-    console.log(decodeToken);
+    // console.log(decodeToken);
 }
 
 class SidebarStudent extends Component {
@@ -25,10 +25,13 @@ class SidebarStudent extends Component {
                 <div className="thismains bg-light col-md-2 bluehead" id="sidebar-wrapper" style={{ left: "0", top: "0", height: "800px" }}>
                     <div className="list-group list-group-flush mt">
                         <div className="d-flex justify-content-center mt-4">
-                            <img src={Ava} width="70" height="70" alt=""></img>
-                            <h4 className="mt-2 ml-3">{this.state.nama}</h4>
+                            <img src={Ava} width="100" height="100" alt=""></img>
                         </div>
-                        <a href="/murid" className="list-group-item list-group-item-action bg-light bluehead">Dashboard</a>
+                        <h4 className="mt-2 text-center">{this.state.nama}</h4>
+                        <a href="/murid" className="list-group-item list-group-item-action bg-light bluehead">
+                            <i className="fa fa-tachometer mr-2" aria-hidden="true" />
+                            Dashboard
+                        </a>
                     </div>
                 </div>
                 {/* </div> */}

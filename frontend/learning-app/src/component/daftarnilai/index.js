@@ -5,8 +5,8 @@ const jwtDecode = require('jwt-decode');
 const token = localStorage.getItem("jwtToken");
 let decodeToken = '';
 if (token != null) {
-     decodeToken = jwtDecode(token);
-     console.log(decodeToken);
+    decodeToken = jwtDecode(token);
+    //  console.log(decodeToken);
 }
 const datatable = {
     columns: [
@@ -34,7 +34,7 @@ const datatable = {
     rows: [],
 }
 
-export default class TopSearchSelect extends Component {   
+export default class TopSearchSelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,9 +45,9 @@ export default class TopSearchSelect extends Component {
         }
     }
     getAllAccount() {
-        
+
     }
-   
+
     componentDidMount() {
         console.log(this.state.kelas)
         fetch(`http://localhost:8080/jawabanByKelas/${this.state.kelas}`, {
@@ -57,13 +57,13 @@ export default class TopSearchSelect extends Component {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(response => {
-            this.setState({
-                data: response
-            })      
-          })
-        .catch(console.error)
+            .then(res => res.json())
+            .then(response => {
+                this.setState({
+                    data: response
+                })
+            })
+            .catch(console.error)
 
         setTimeout(() => {
             this.state.data.forEach(data => {
@@ -71,22 +71,22 @@ export default class TopSearchSelect extends Component {
             })
 
             const temp = <MDBDataTableV5
-                            hover
-                            entriesOptions={[5, 20, 25]}
-                            entries={5}
-                            pagesAmount={4}
-                            data={datatable}
-                            pagingTop
-                            searchTop
-                            searchBottom={false}
-                            className="border p-3"
-                        />;
+                hover
+                entriesOptions={[5, 20, 25]}
+                entries={5}
+                pagesAmount={4}
+                data={datatable}
+                pagingTop
+                searchTop
+                searchBottom={false}
+                className="border p-3"
+            />;
             this.setState({
                 showData: temp
             })
         }, 100);
 
-     }
+    }
 
     render() {
         return (

@@ -122,9 +122,9 @@ class Soal extends Component {
                 {this.state.soal.map((data, key) => {
                     this.state.jawabanBenar.push(data.jawaban)
                     return (
-                        <div className="soalContainer" key={key}>
-                            <div className="soalbox">
-                                <p>{data.question}</p>
+                        <div className="card soalbox " key={key}>
+                            <div className="card-body ">
+                                <div className="card-title">{data.question}</div>
                                 <div>
                                     <label>
                                         <input type="radio" name={key} value="pilihan_1" onClick={val => this.isiJawaban(val, key)}/>

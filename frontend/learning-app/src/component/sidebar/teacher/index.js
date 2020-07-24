@@ -18,7 +18,7 @@ class SidebarTeacher extends Component {
                 <div className="bg-light col-md-2 bluehead" id="sidebar-wrapper" style={{ left: "0", top: "0", height: "800px" }}>
                     <div className="list-group list-group-flush mt">
                         <div className="d-flex justify-content-center mt-4">
-                            <img src={Ava} width="100" height="100" alt=""></img>
+                            <img src={Ava} width="100" height="100" alt="" />
                         </div>
                         <h4 className="mt-2 text-center">{decodeToken.jti}</h4>
                         <a href="/guru" className="list-group-item list-group-item-action bg-light bluehead">

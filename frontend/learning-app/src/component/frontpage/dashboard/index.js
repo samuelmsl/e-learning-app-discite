@@ -18,12 +18,12 @@ class Dashboard extends Component {
                         </h1>
 
                             <div className="buttonlogin ml-5 mt-4 bluetext d-flex justify-content-center align-items-center">
-                                <a href="/register">Daftar Sekarang</a>
+                                <a href="/register" style={{ textDecoration: "none" }}>Daftar Sekarang</a>
                             </div>
                             <h3 className="ml-5 mt-4">Sudah memiliki akun?</h3>
 
                             <div className="buttonlogin ml-5 mt-4 bluetext d-flex justify-content-center align-items-center">
-                                <a href="/login">Masuk</a>
+                                <a href="/login" style={{ textDecoration: "none" }}>Masuk</a>
                             </div>
                         </div>
                     </div>

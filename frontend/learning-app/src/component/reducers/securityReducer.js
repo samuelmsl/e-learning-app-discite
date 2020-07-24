@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from "../actions/types";
+import { SET_CURRENT_USER, LOGOUT_USER } from "../actions/types";
 
 const initialState = {
   validToken: false,
@@ -21,6 +21,12 @@ export default function(state = initialState, action) {
         validToken: booleanActionPayload(action.payload),
         user: action.payload
       };
+      case LOGOUT_USER:
+        return {
+          ...state,
+          validToken: false,
+          user: ""
+        }
 
     default:
       return state;

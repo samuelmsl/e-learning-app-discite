@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 class Navbar extends Component {
     // state = {}
     logout() {
+        sessionStorage.clear();
         this.props.logout();
         window.location.href = "/";
     }

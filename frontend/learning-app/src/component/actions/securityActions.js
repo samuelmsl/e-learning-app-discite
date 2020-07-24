@@ -1,7 +1,8 @@
 import axios from "axios";
-import { SET_CURRENT_USER } from "./types";
+import { SET_CURRENT_USER, LOGOUT_USER } from "./types";
 import setJWTToken from "../security/setJWTToken";
 import jwt_decode from "jwt-decode";
+import { storages } from "redux-persist";
 
 
 
@@ -26,15 +27,17 @@ export const login = LoginRequest => async dispatch => {
   } catch (err) {
   alert("Username or Password is Invalid !")
   localStorage.removeItem("jwtToken");
+  sessionStorage.clear();
   setJWTToken(false);
   }
 };
 
 export const logout = () => dispatch => {
   localStorage.removeItem("jwtToken");
+  sessionStorage.removeItem("persist:auth")
   setJWTToken(false);
   dispatch({
-    type: SET_CURRENT_USER,
+    type: LOGOUT_USER,
     payload: {}
   });
 };

@@ -32,32 +32,35 @@ export default class BuatModul extends Component {
     }
 
     handleSubmit = () => {
-        const values = this.state.url.split("watch?v=")
-        const finalUrl = `${values[0]}embed/${values[1]}`
+        if (this.state.url.includes("watch?v=")) {            
+            const values = this.state.url.split("watch?v=")
+            const finalUrl = `${values[0]}embed/${values[1]}`
 
-        const formData = new FormData();
-        formData.append('files',this.state.selectedFile)
-        formData.append('mapel',this.state.mapel)
-        formData.append('kelas',this.state.kelas)
-        formData.append('url',finalUrl)
-        formData.append('judul',this.state.judul)
+            const formData = new FormData();
+            formData.append('files',this.state.selectedFile)
+            formData.append('mapel',this.state.mapel)
+            formData.append('kelas',this.state.kelas)
+            formData.append('url',finalUrl)
+            formData.append('judul',this.state.judul)
 
-
-       if (formData != null) {
-            fetch(`http://localhost:8080/uploadFile`, {
-                method: "POST",
-                body: formData,
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(res => {
-                    if (res.status == 200) {
-                        alert("Berhasil Membuat Modul!")
+            if (formData != null) {
+                fetch(`http://localhost:8080/uploadFile`, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Authorization': `Bearer ${token}`
                     }
-            })
-            .catch(err => console.log(err))
-        }
+                })
+                .then(res => {
+                        if (res.status == 200) {
+                            alert("Berhasil Membuat Modul!")
+                        }
+                })
+                .catch(err => console.log(err))
+            }
+        } else {
+            alert("Data yang dimasukan salah")
+        }   
     }
 
     render() {
@@ -73,10 +76,10 @@ export default class BuatModul extends Component {
                         </div>
                         <div className="modal-body">
                                  <div className="form-group">
-                                    <input type="file" class="form-control-file h6"  onChange={this.handleFile}/>
+                                    <input type="file" class="form-control-file h6" accept="application/pdf" onChange={this.handleFile}/>
                                 </div>
                                 <div className="form-group">
-                                    <select className="form-control" name="mapel" id="nama_mapel" onChange={this.handleChange}>
+                                    <select className="form-control" name="mapel" id="nama_mapel"  onChange={this.handleChange}>
                                         <option selected disabled>~ Nama Mapel ~</option>
                                         <option value="Matematika">Matematika</option>
                                         <option value="Bahasa Indonesia">Bahasa Indonesia</option>
